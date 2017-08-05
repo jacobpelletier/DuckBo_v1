@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         if (GroundCheck())
         {
+            anim.SetBool("Jump", false);
             anim.SetBool("Grounded", true);
             anim.SetBool("Fall", false);
         }
