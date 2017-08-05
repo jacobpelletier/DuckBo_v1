@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 
         size = col.bounds.size;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         if (GroundCheck())
@@ -140,14 +140,14 @@ public class PlayerController : MonoBehaviour {
     bool GroundCheck()
     {
         //Raycasts origin
-        Vector2 blCorner = transform.position + new Vector3(-size.x / 2, -size.y / 2 - 0.05f);
-        Vector2 brCorner = transform.position + new Vector3(size.x / 2, -size.y / 2 - 0.05f);
+        Vector2 blCorner = transform.position + new Vector3(-size.x / 2 + 0.05f, -size.y / 2 - 0.05f);
+        Vector2 brCorner = transform.position + new Vector3(size.x / 2 - 0.05f, -size.y / 2 - 0.05f);
 
         Vector2 temp = blCorner;
         temp.y -= 0.01f;
 
         Debug.DrawLine(blCorner, temp, Color.red);
- 
+
         //Send raycasts
         RaycastHit2D grounded1 = Physics2D.Raycast(blCorner, -Vector2.up, 0.05f);
         RaycastHit2D grounded2 = Physics2D.Raycast(brCorner, -Vector2.up, 0.05f);
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour {
         else
         {
             return false;
-        }  
+        }
     }
 
     IEnumerator SittingStill()
