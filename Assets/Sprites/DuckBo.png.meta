@@ -1,0 +1,628 @@
+fileFormatVersion: 2
+guid: f90a9c8c863a1b34e8db3dab6a3b7f33
+timeCreated: 1501902494
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Walk_0
+    21300002: Walk_1
+    21300004: Walk_2
+    21300006: Walk_3
+    21300008: Walk_4
+    21300010: Walk_5
+    21300012: Walk_6
+    21300014: Walk_7
+    21300016: Walk_8
+    21300018: Walk_9
+    21300020: Shot_0
+    21300022: Down_0
+    21300024: Down_1
+    21300026: Jump_1
+    21300028: Jump_2
+    21300030: Jump_3
+    21300032: Shot_1
+    21300034: Up_0
+    21300036: Up_1
+    21300038: Idle2_0
+    21300040: Jump_0
+    21300042: Jump_4
+    21300044: Idle_0
+    21300046: Idle_1
+    21300048: Idle_2
+    21300050: Idle_3
+    21300052: Idle_4
+    21300054: Idle_5
+    21300056: Idle_6
+    21300058: Idle_7
+    21300060: Idle_8
+    21300062: Idle_9
+    21300064: Idle_10
+    21300066: Idle_11
+    21300068: Idle_12
+    21300070: Walk_0
+    21300072: Walk_1
+    21300074: Walk_2
+    21300076: Walk_3
+    21300078: Walk_4
+    21300080: Walk_5
+    21300082: Walk_6
+    21300084: Walk_7
+    21300086: Walk_8
+    21300088: Walk_9
+    21300090: DuckBo_10
+    21300092: DuckBo_11
+    21300094: DuckBo_12
+    21300096: Jump_1
+    21300098: Jump_2
+    21300100: Fall_0
+    21300102: DuckBo_16
+    21300104: DuckBo_17
+    21300106: DuckBo_18
+    21300108: Idle_0
+    21300110: Jump_0
+    21300112: Fall_1
+    21300114: LongIdle_0
+    21300116: LongIdle_1
+    21300118: DuckBo_24
+    21300120: DuckBo_25
+    21300122: DuckBo_26
+    21300124: DuckBo_27
+    21300126: DuckBo_28
+    21300128: DuckBo_29
+    21300130: DuckBo_30
+    21300132: DuckBo_31
+    21300134: DuckBo_32
+    21300136: DuckBo_33
+    21300138: DuckBo_34
+    21300140: LongIdle_2
+    21300142: LongIdle_3
+    21300144: LongIdle_4
+    21300146: LongIdle_5
+    21300148: LongIdle_6
+    21300150: LongIdle_7
+    21300152: LongIdle_8
+    21300154: LongIdle_9
+    21300156: LongIdle_10
+    21300158: LongIdle_11
+    21300160: LongIdle_12
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Walk_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5000007}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_4
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_6
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_7
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_8
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Walk_9
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 162
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DuckBo_10
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 138
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DuckBo_11
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 138
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DuckBo_12
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 139
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Jump_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 123
+        width: 24
+        height: 22
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Jump_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 127
+        width: 24
+        height: 22
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fall_0
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 124
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DuckBo_16
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 116
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DuckBo_17
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 111
+        width: 14
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DuckBo_18
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 111
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Idle_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 118
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Jump_0
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 118
+        width: 24
+        height: 20
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fall_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 118
+        width: 24
+        height: 19
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 74
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 74
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 74
+        width: 20
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_3
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 74
+        width: 20
+        height: 21
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_4
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 73
+        width: 20
+        height: 24
+      alignment: 9
+      pivot: {x: 0.38010255, y: 0.45356146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 73
+        width: 20
+        height: 20
+      alignment: 9
+      pivot: {x: 0.3731369, y: 0.54876024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_6
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 73
+        width: 20
+        height: 20
+      alignment: 9
+      pivot: {x: 0.3731369, y: 0.5557259}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_7
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 73
+        width: 20
+        height: 21
+      alignment: 9
+      pivot: {x: 0.37313613, y: 0.5663405}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_8
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 73
+        width: 21
+        height: 19
+      alignment: 9
+      pivot: {x: 0.34659976, y: 0.6081688}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_9
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 73
+        width: 21
+        height: 19
+      alignment: 9
+      pivot: {x: 0.3487912, y: 0.5861716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_10
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 73
+        width: 21
+        height: 19
+      alignment: 9
+      pivot: {x: 0.33333188, y: 0.6026531}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_11
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 73
+        width: 21
+        height: 17
+      alignment: 9
+      pivot: {x: 0.36128017, y: 0.6348078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LongIdle_12
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 73
+        width: 21
+        height: 17
+      alignment: 9
+      pivot: {x: 0.3266965, y: 0.6348078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
