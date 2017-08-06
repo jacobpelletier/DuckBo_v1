@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour {
     public float maxVelocity = 4f;
     public float jumpSpeed = 8f;
 
+    //gameobjects
+    public GameObject muzzleFlash;
+    public GameObject muzzleUp;
+    public GameObject muzzleDown;
+    public GameObject muzzleHorizontal;
+    public GameObject muzzleBehind;
+
     //grabbing rigidbody and animator
     private Rigidbody2D myBody;
     private Animator anim;
@@ -16,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     //grab directions for sprite
     private float faceRight;
     private float faceLeft;
+    private bool shoot = true;
 
     private Vector2 size;
     private Collider2D col;
@@ -41,13 +49,15 @@ public class PlayerController : MonoBehaviour {
         if (GroundCheck())
         {
             anim.SetBool("Jump", false);
-            anim.SetBool("Grounded", true);
             anim.SetBool("Fall", false);
+            anim.SetBool("Grounded", true);
+            
         }
         else
         {
             anim.SetBool("Grounded", false);
         }
+        PlayerShooting();
         PlayerJumpSpace();
     }
 
@@ -66,11 +76,43 @@ public class PlayerController : MonoBehaviour {
         float rawVel = myBody.velocity.x;
         float vel = Mathf.Abs(myBody.velocity.x);
 
-        //Get keyboard input (-1 | 0 | 1)
-        float h = Input.GetAxisRaw("Horizontal");
+        //if up or down... else
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            anim.SetBool("Jump", false);
+            anim.SetBool("Up", true);
+            StopCoroutine("SittingStill");
+            anim.SetBool("SitStill", false);
+        }
+        else if(Input.GetKey(KeyCode.DownArrow))
+        {
+            anim.SetBool("Jump", false);
+            anim.SetBool("Down", true);
+            StopCoroutine("SittingStill");
+            anim.SetBool("SitStill", false);
+        }
+        else
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", false);
+        }
+
+        //if shoot right or left, turn around
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector3 temp = transform.localScale;
+            temp.x = faceRight;
+            transform.localScale = temp;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 temp = transform.localScale;
+            temp.x = faceLeft;
+            transform.localScale = temp;
+        }
 
         // if Right
-        if (h > 0)
+        if (Input.GetKey(KeyCode.D))
         {
             StopCoroutine("SittingStill");
             anim.SetBool("SitStill", false);
@@ -84,9 +126,18 @@ public class PlayerController : MonoBehaviour {
             temp.x = faceRight;
             transform.localScale = temp;
 
-            anim.SetBool("Walk",true);
+            anim.SetBool("Walk", true);
+
+            if (Input.GetKey(KeyCode.LeftArrow)){
+                anim.SetBool("Behind", true);
+            }
+            else
+            {
+                anim.SetBool("Behind", false);
+            }
+        }
         // if Left
-        } else if (h < 0)
+        else if (Input.GetKey(KeyCode.A))
         {
             StopCoroutine("SittingStill");
             anim.SetBool("SitStill", false);
@@ -101,11 +152,22 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = temp;
 
             anim.SetBool("Walk", true);
-        } else
+
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                anim.SetBool("Behind", true);
+            }
+            else
+            {
+                anim.SetBool("Behind", false);
+            }
+        }
+        else
         {
             anim.SetBool("Walk", false);
             StartCoroutine("SittingStill");
         }
+        
 
         myBody.AddForce(new Vector2(forceX, 0));
     }
@@ -116,25 +178,69 @@ public class PlayerController : MonoBehaviour {
         float velY = myBody.velocity.y;
 
         //if jump pressed && !still pressed && grounded = jump
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             bool isGrounded = GroundCheck();
-            Debug.Log(isGrounded);
             if (isGrounded)
             {
-                anim.SetBool("Jump", true);
+                if (!anim.GetBool("Jump"))
+                {
+                    anim.SetBool("Jump", true);
+                }
+
                 myBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
                 StopCoroutine("SittingStill");
                 anim.SetBool("SitStill", false);
             }
         }
-
-        if(velY < 0 && !GroundCheck())
+        
+        //Top of arc of jump
+        if(velY < 0 && !GroundCheck() && !anim.GetBool("Fall"))
         {
             anim.SetBool("Jump", false);
             anim.SetBool("Fall", true);
         }
 
+    }
+
+    void PlayerShooting()
+    {
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        {
+            //if cooldown over, shoot bullet
+            if (shoot)
+            {
+                StopCoroutine("SittingStill");
+                anim.SetBool("SitStill", false);
+                anim.SetBool("Shoot", true);
+                shoot = false;
+
+                //Spawn muzzle flash
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    Instantiate(muzzleFlash, muzzleUp.transform.position, transform.rotation);
+                }
+                else if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    Instantiate(muzzleFlash, muzzleDown.transform.position, transform.rotation);
+                }
+                else if ((Input.GetKey(KeyCode.LeftArrow) && myBody.velocity.x > 0.1f) || (Input.GetKey(KeyCode.RightArrow) && myBody.velocity.x < -0.1f))
+                {
+                    Instantiate(muzzleFlash, muzzleBehind.transform.position, transform.rotation);
+                }
+                else
+                {
+                    Instantiate(muzzleFlash, muzzleHorizontal.transform.position, transform.rotation);
+                }
+                
+                StartCoroutine("ShootCooldown");
+            }
+            
+        }
+        else
+        {
+            anim.SetBool("Shoot", false);
+        }
     }
 
     bool GroundCheck()
@@ -167,5 +273,16 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(10f);
 
         anim.SetBool("SitStill", true);
+    }
+
+    IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        anim.SetBool("Shoot", false);
+
+        yield return new WaitForSeconds(0.3f);
+
+        shoot = true;
     }
 }

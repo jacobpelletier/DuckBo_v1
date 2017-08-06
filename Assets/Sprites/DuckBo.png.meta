@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f90a9c8c863a1b34e8db3dab6a3b7f33
-timeCreated: 1501902494
+timeCreated: 1501975285
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -49,15 +49,15 @@ TextureImporter:
     21300084: Walk_7
     21300086: Walk_8
     21300088: Walk_9
-    21300090: DuckBo_10
-    21300092: DuckBo_11
-    21300094: DuckBo_12
+    21300090: Shot_0
+    21300092: Down_0
+    21300094: Down_1
     21300096: Jump_1
     21300098: Jump_2
     21300100: Fall_0
-    21300102: DuckBo_16
-    21300104: DuckBo_17
-    21300106: DuckBo_18
+    21300102: Shot_1
+    21300104: Up_0
+    21300106: Up_1
     21300108: Idle_0
     21300110: Jump_0
     21300112: Fall_1
@@ -93,6 +93,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -108,10 +110,13 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -175,9 +180,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5000007}
+      pivot: {x: 0.37313676, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_1
@@ -188,9 +194,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_2
@@ -201,9 +208,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_3
@@ -214,9 +222,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_4
@@ -227,9 +236,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_5
@@ -240,9 +250,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_6
@@ -253,9 +264,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_7
@@ -266,9 +278,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_8
@@ -279,9 +292,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Walk_9
@@ -292,48 +306,52 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DuckBo_10
+      name: Shot_0
       rect:
         serializedVersion: 2
         x: 4
         y: 138
         width: 24
         height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DuckBo_11
+      name: Down_0
       rect:
         serializedVersion: 2
         x: 44
         y: 138
         width: 15
         height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.57711333, y: 0.710006}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DuckBo_12
+      name: Down_1
       rect:
         serializedVersion: 2
         x: 61
-        y: 139
+        y: 138
         width: 15
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5771133, y: 0.710006}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Jump_1
@@ -347,6 +365,7 @@ TextureImporter:
       pivot: {x: 0.3731368, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Jump_2
@@ -360,6 +379,7 @@ TextureImporter:
       pivot: {x: 0.3731368, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Fall_0
@@ -373,45 +393,49 @@ TextureImporter:
       pivot: {x: 0.3731368, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DuckBo_16
+      name: Shot_1
       rect:
         serializedVersion: 2
         x: 4
         y: 116
-        width: 23
+        width: 24
         height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DuckBo_17
+      name: Up_0
       rect:
         serializedVersion: 2
         x: 43
         y: 111
         width: 14
         height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.6482958, y: 0.43034217}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: DuckBo_18
+      name: Up_1
       rect:
         serializedVersion: 2
         x: 60
         y: 111
         width: 14
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 26
+      alignment: 9
+      pivot: {x: 0.6482958, y: 0.43034217}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Idle_0
@@ -422,9 +446,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Jump_0
@@ -438,6 +463,7 @@ TextureImporter:
       pivot: {x: 0.3731368, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: Fall_1
@@ -448,9 +474,10 @@ TextureImporter:
         width: 24
         height: 19
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.37313652, y: 0.55344594}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_0
@@ -461,9 +488,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_1
@@ -474,9 +502,10 @@ TextureImporter:
         width: 24
         height: 21
       alignment: 9
-      pivot: {x: 0.3731368, y: 0.5}
+      pivot: {x: 0.3731368, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_2
@@ -490,6 +519,7 @@ TextureImporter:
       pivot: {x: 0.3731368, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_3
@@ -503,6 +533,7 @@ TextureImporter:
       pivot: {x: 0.3731368, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_4
@@ -516,6 +547,7 @@ TextureImporter:
       pivot: {x: 0.38010255, y: 0.45356146}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_5
@@ -529,6 +561,7 @@ TextureImporter:
       pivot: {x: 0.3731369, y: 0.54876024}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_6
@@ -542,6 +575,7 @@ TextureImporter:
       pivot: {x: 0.3731369, y: 0.5557259}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_7
@@ -555,6 +589,7 @@ TextureImporter:
       pivot: {x: 0.37313613, y: 0.5663405}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_8
@@ -568,6 +603,7 @@ TextureImporter:
       pivot: {x: 0.34659976, y: 0.6081688}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_9
@@ -581,6 +617,7 @@ TextureImporter:
       pivot: {x: 0.3487912, y: 0.5861716}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_10
@@ -594,6 +631,7 @@ TextureImporter:
       pivot: {x: 0.33333188, y: 0.6026531}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_11
@@ -604,9 +642,10 @@ TextureImporter:
         width: 21
         height: 17
       alignment: 9
-      pivot: {x: 0.36128017, y: 0.6348078}
+      pivot: {x: 0.3266965, y: 0.6348078}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: LongIdle_12
@@ -620,8 +659,10 @@ TextureImporter:
       pivot: {x: 0.3266965, y: 0.6348078}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
