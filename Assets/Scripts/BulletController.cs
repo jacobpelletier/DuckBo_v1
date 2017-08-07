@@ -30,11 +30,12 @@ public class BulletController : MonoBehaviour {
         //Destroy on collision
         StartCoroutine("AutoDestroy");
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
         Vector3 temp;
 
+        //Determine direction of bullet travel
         if (direction.z == 0f)
         {
             temp = new Vector3(1f, 0f, 0f);
@@ -44,7 +45,7 @@ public class BulletController : MonoBehaviour {
             temp = new Vector3(-1f, 0f, 0f);
         }
         else if (direction.z == 90f)
-        {            
+        {
             temp = new Vector3(0f, 1f, 0f);
         }
         else if (direction.z == -90f)
@@ -56,20 +57,23 @@ public class BulletController : MonoBehaviour {
             temp = new Vector3(1f, 0f, 0f);
         }
 
+        //Add speed to it...
         temp *= speed;
 
+        //...then add the force <(-_-)>
         rb.AddForce(temp);
-        //transform.position += temp;
 	}
-    
+
+    //If bullet hits a collider, and it's not player, destroy bullet
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.tag != "Player")
         {
             Destroy(gameObject);
-        }     
+        }
     }
 
+    //If a bullet is alive for too damn long, get rid of it
     IEnumerator AutoDestroy()
     {
         yield return new WaitForSeconds(0.5f);

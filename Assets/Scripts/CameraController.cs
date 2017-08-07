@@ -5,12 +5,30 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     public GameObject player;
+    public GameObject map;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    private SpriteRenderer mapSR;
+    private Camera cam;
+    private float halfMap;
+    private float spotBegin;
+    private float spotEnd;
+
+  void Start (){
+    mapSR = map.GetComponent<SpriteRenderer>();
+
+    //Get cam width and height
+    cam = Camera.main;
+    float height = 2f * cam.orthographicSize;
+    float width = height * cam.aspect;
+
+    //Find half of map, then find the begin and ending camera spot on x
+    halfMap = mapSR.bounds.size.x - (mapSR.bounds.size.x/2);
+    spotBegin = map.transform.position.x - halfMap + (width / 2);
+    spotEnd = map.transform.position.x + halfMap - (width / 2);
+
+    this.transform.position = new Vector3(spotBegin,0,-10);
+  }
+
 	// Update is called once per frame
 	void Update () {
         Vector3 temp = player.transform.position;
@@ -23,17 +41,17 @@ public class CameraController : MonoBehaviour {
         }
 
         //if end of map
-        if (temp.x < 0)
+        if (temp.x < spotBegin)
         {
-            temp.x = 0;
+            temp.x = spotBegin;
         }
-        else if (temp.x > 64f)
+        else if (temp.x > spotEnd)
         {
-            temp.x = 64f;
+            temp.x = spotEnd;
         }
 
         //set camera pos
         this.transform.position = temp;
-        
+
 	}
 }

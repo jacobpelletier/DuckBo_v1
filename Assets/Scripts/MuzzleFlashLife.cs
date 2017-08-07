@@ -8,16 +8,12 @@ public class MuzzleFlashLife : MonoBehaviour {
 	void Start () {
         StartCoroutine("Life");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    IEnumerator Life()
-    {
-        yield return new WaitForSeconds(0.5f);
+	//Muzzle Flash life length
+  IEnumerator Life()
+  {
+      yield return new WaitForSeconds(0.5f);
 
-        Destroy(gameObject);
-    }
+      Destroy(gameObject);
+  }
 }
