@@ -16,6 +16,18 @@ public class PlayerController : MonoBehaviour {
     public GameObject muzzleHorizontal;
     public GameObject muzzleBehind;
 
+    public GameObject BulletUp;
+    public GameObject BulletDown;
+    public GameObject BulletLeft;
+    public GameObject BulletRight;
+
+    public GameObject Respawn;
+
+    //sounds
+    public AudioClip jump;
+    public AudioClip shot;
+    public AudioClip death;
+
     //grabbing rigidbody and animator
     private Rigidbody2D myBody;
     private Animator anim;
@@ -27,6 +39,7 @@ public class PlayerController : MonoBehaviour {
 
     private Vector2 size;
     private Collider2D col;
+    private AudioSource audioSource;
 
     // Starts before Start function
     void Awake()
@@ -34,6 +47,7 @@ public class PlayerController : MonoBehaviour {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -59,6 +73,12 @@ public class PlayerController : MonoBehaviour {
         }
         PlayerShooting();
         PlayerJumpSpace();
+
+        //fall death
+        if (transform.position.y < -10f)
+        {
+            Death();
+        }
     }
 
     //physics update
@@ -188,6 +208,8 @@ public class PlayerController : MonoBehaviour {
                     anim.SetBool("Jump", true);
                 }
 
+                audioSource.PlayOneShot(jump, 0.7f);
+
                 myBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
                 StopCoroutine("SittingStill");
                 anim.SetBool("SitStill", false);
@@ -207,6 +229,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
+            anim.SetBool("HoldShoot", true);
             //if cooldown over, shoot bullet
             if (shoot)
             {
@@ -215,22 +238,67 @@ public class PlayerController : MonoBehaviour {
                 anim.SetBool("Shoot", true);
                 shoot = false;
 
+                audioSource.PlayOneShot(shot, 0.7f);
+
                 //Spawn muzzle flash
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    Instantiate(muzzleFlash, muzzleUp.transform.position, transform.rotation);
+                    //muzzleflash
+                    Quaternion direction = Quaternion.Euler(-90f, 90f, 90f);
+                    var newFlash = Instantiate(muzzleFlash, muzzleUp.transform.position, direction);
+                    newFlash.transform.parent = gameObject.transform;
+                    newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                    //bullet
+                    Instantiate(BulletUp, muzzleUp.transform.position, transform.rotation);
                 }
                 else if (Input.GetKey(KeyCode.DownArrow))
                 {
-                    Instantiate(muzzleFlash, muzzleDown.transform.position, transform.rotation);
+                    Quaternion direction = Quaternion.Euler(90f, 90f, 90f);
+                    var newFlash = Instantiate(muzzleFlash, muzzleDown.transform.position, direction);
+                    newFlash.transform.parent = gameObject.transform;
+                    newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                    //bullet
+                    Instantiate(BulletDown, muzzleDown.transform.position, transform.rotation);
                 }
-                else if ((Input.GetKey(KeyCode.LeftArrow) && myBody.velocity.x > 0.1f) || (Input.GetKey(KeyCode.RightArrow) && myBody.velocity.x < -0.1f))
+                else if ((Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.A)))
                 {
-                    Instantiate(muzzleFlash, muzzleBehind.transform.position, transform.rotation);
+                    Quaternion direction;
+
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        direction = Quaternion.Euler(-180f, 90f, 90f);
+                        Instantiate(BulletLeft, muzzleBehind.transform.position, transform.rotation);
+                    }
+                    else
+                    {
+                        direction = Quaternion.Euler(0f, 90f, 90f);
+                        Instantiate(BulletRight, muzzleBehind.transform.position, transform.rotation);
+                    }
+
+                    var newFlash = Instantiate(muzzleFlash, muzzleBehind.transform.position, direction);
+                    newFlash.transform.parent = gameObject.transform;
+                    newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 else
                 {
-                    Instantiate(muzzleFlash, muzzleHorizontal.transform.position, transform.rotation);
+                    Quaternion direction;
+
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        direction = Quaternion.Euler(-180f, 90f, 90f);
+                        Instantiate(BulletLeft, muzzleHorizontal.transform.position, transform.rotation);
+                    }
+                    else
+                    {
+                        direction = Quaternion.Euler(0f, 90f, 90f);
+                        Instantiate(BulletRight, muzzleHorizontal.transform.position, transform.rotation);
+                    }
+
+                    var newFlash = Instantiate(muzzleFlash, muzzleHorizontal.transform.position, direction);
+                    newFlash.transform.parent = gameObject.transform;
+                    newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 
                 StartCoroutine("ShootCooldown");
@@ -240,7 +308,14 @@ public class PlayerController : MonoBehaviour {
         else
         {
             anim.SetBool("Shoot", false);
+            anim.SetBool("HoldShoot", false);
         }
+    }
+
+    public void Death()
+    {
+        transform.position = Respawn.transform.position;
+        audioSource.PlayOneShot(death, 0.7f);
     }
 
     bool GroundCheck()

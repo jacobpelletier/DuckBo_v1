@@ -1,9 +1,22 @@
 fileFormatVersion: 2
 guid: ad8964c456076834d9bfe97e8f9f29b5
-timeCreated: 1501906245
+timeCreated: 1502024857
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: HunterSideScrollerTransparentV2_0
+    21300002: HunterSideScrollerTransparentV2_1
+    21300004: HunterSideScrollerTransparentV2_2
+    21300006: HunterSideScrollerTransparentV2_3
+    21300008: HunterSideScrollerTransparentV2_4
+    21300010: HunterSideScrollerTransparentV2_5
+    21300012: HunterSideScrollerTransparentV2_6
+    21300014: HunterSideScrollerTransparentV2_7
+    21300016: HunterSideScrollerTransparentV2_8
+    21300018: HunterSideScrollerTransparentV2_9
+    21300020: HunterSideScrollerTransparentV2_10
+    21300022: HunterSideScrollerTransparentV2_11
+    21300024: HunterSideScrollerTransparentV2_12
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -12,6 +25,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -27,14 +42,17 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    serializedVersion: 2
+    filterMode: 0
     aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,15 +71,222 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 39
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 39
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_2
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 39
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.5433391, y: 0.49999967}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_3
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 39
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_4
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 39
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 39
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_6
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 39
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_7
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 29
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 13
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_9
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 13
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 13
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_11
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 13
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HunterSideScrollerTransparentV2_12
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 24
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

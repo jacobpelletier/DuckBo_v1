@@ -27,6 +27,10 @@ public class CameraController : MonoBehaviour {
         {
             temp.x = 0;
         }
+        else if (temp.x > 64f)
+        {
+            temp.x = 64f;
+        }
 
         //set camera pos
         this.transform.position = temp;
