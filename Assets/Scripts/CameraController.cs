@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+    //Grab player and map
+    //Will follow the player and use map as border
     public GameObject player;
     public GameObject map;
 
+    //Need sprite renderer and cam for sizing
     private SpriteRenderer mapSR;
     private Camera cam;
+
+    //values for calculations
     private float halfMap;
     private float spotBegin;
     private float spotEnd;

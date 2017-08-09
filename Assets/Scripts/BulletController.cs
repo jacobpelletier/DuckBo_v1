@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 
+    //Bullet movement and damage variables
     public float speed = 5f;
+    public int damage = 1;
     public Quaternion direction;
 
+    //If enemyBullet is true, bullets will kill the player
+    public bool enemyBullet = false;
+    private PlayerController playerScript;
+
+    //Bullet RigidBody
     private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
+        //Grab player currently active and get rigidbody
+        playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
 
         //Rotates bullet
@@ -67,9 +76,19 @@ public class BulletController : MonoBehaviour {
     //If bullet hits a collider, and it's not player, destroy bullet
     void OnTriggerEnter2D(Collider2D collider)
     {
+        //if it collides with something that's not the player, destroy
         if(collider.tag != "Player")
         {
             Destroy(gameObject);
+        }
+        else if (collider.tag == "Player" && enemyBullet){
+            playerScript.Death();
+        }
+
+        //if it collides with hunter 1, get script and run hit function
+        if(collider.tag == "Hunter"){
+          Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
+          instance.Hit(damage);
         }
     }
 

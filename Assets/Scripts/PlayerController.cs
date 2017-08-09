@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour {
     // Starts before Start function
     void Awake()
     {
+        //Get player components
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
@@ -161,6 +162,7 @@ public class PlayerController : MonoBehaviour {
 
             anim.SetBool("Walk", true);
 
+            //if holding opposite shoot, shoot behind
             if (Input.GetKey(KeyCode.LeftArrow)){
                 anim.SetBool("Behind", true);
             }
@@ -175,6 +177,7 @@ public class PlayerController : MonoBehaviour {
             StopCoroutine("SittingStill");
             anim.SetBool("SitStill", false);
 
+            //if vel < maxVel OR we're not grounded and moving in the opposite direction
             if (vel <= maxVelocity || (!GroundCheck() && (rawVel > 0)))
             {
                 forceX = -playerSpeed;
@@ -186,6 +189,7 @@ public class PlayerController : MonoBehaviour {
 
             anim.SetBool("Walk", true);
 
+            //if holding opposite shoot, shoot behind
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 anim.SetBool("Behind", true);
@@ -197,8 +201,12 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            Vector2 temp = myBody.velocity;
+            temp.x = 0f;
+            myBody.velocity = temp;
             anim.SetBool("Walk", false);
             StartCoroutine("SittingStill");
+            anim.SetBool("Behind", false);
         }
 
         //addforce left or right
@@ -326,6 +334,7 @@ public class PlayerController : MonoBehaviour {
             }
 
         }
+        //else if done shooting
         else
         {
             anim.SetBool("Shoot", false);
@@ -351,6 +360,7 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D grounded1 = Physics2D.Raycast(blCorner, -Vector2.up, 0.05f);
         RaycastHit2D grounded2 = Physics2D.Raycast(brCorner, -Vector2.up, 0.05f);
 
+        //If grounded by any raycast, return true
         if (grounded1.collider != null || grounded2.collider != null)
         {
             return true;
