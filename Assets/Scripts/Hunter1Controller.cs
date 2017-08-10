@@ -21,7 +21,6 @@ public class Hunter1Controller : MonoBehaviour {
 
     //Shooting variables
     private bool shootCooldown = false;
-    private bool shootNow = false;
     public GameObject gunTip;
     public GameObject bulletLeft;
     public GameObject bulletRight;
@@ -105,7 +104,7 @@ public class Hunter1Controller : MonoBehaviour {
                 shootCooldown = true;
 
                 anim.SetBool("Shoot", true);
-                StartCoroutine("ShootCooldown"); 
+                StartCoroutine("ShootCooldown");
 			}
         }
 	}
@@ -229,7 +228,7 @@ public class Hunter1Controller : MonoBehaviour {
         Shoot();
         anim.SetBool("Shoot", false);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         shootCooldown = false;
     }
 }
