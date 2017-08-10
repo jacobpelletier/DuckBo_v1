@@ -110,27 +110,6 @@ public class PlayerController : MonoBehaviour {
         float rawVel = myBody.velocity.x;
         float vel = Mathf.Abs(myBody.velocity.x);
 
-        //if up or down... else
-        if(Input.GetKey(KeyCode.UpArrow))
-        {
-            anim.SetBool("Jump", false);
-            anim.SetBool("Up", true);
-            StopCoroutine("SittingStill");
-            anim.SetBool("SitStill", false);
-        }
-        else if(Input.GetKey(KeyCode.DownArrow))
-        {
-            anim.SetBool("Jump", false);
-            anim.SetBool("Down", true);
-            StopCoroutine("SittingStill");
-            anim.SetBool("SitStill", false);
-        }
-        else
-        {
-            anim.SetBool("Up", false);
-            anim.SetBool("Down", false);
-        }
-
         //if shoot right or left, turn around
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -159,7 +138,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 temp = transform.localScale;
             temp.x = faceRight;
             transform.localScale = temp;
-
+            
             anim.SetBool("Walk", true);
 
             //if holding opposite shoot, shoot behind
@@ -207,6 +186,29 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("Walk", false);
             StartCoroutine("SittingStill");
             anim.SetBool("Behind", false);
+        }
+
+        //if up or down... else
+        if (Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+        {
+            anim.SetBool("Jump", false);
+            anim.SetBool("Up", true);
+            anim.SetBool("Behind", false);
+            StopCoroutine("SittingStill");
+            anim.SetBool("SitStill", false);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
+        {
+            anim.SetBool("Jump", false);
+            anim.SetBool("Down", true);
+            anim.SetBool("Behind", false);
+            StopCoroutine("SittingStill");
+            anim.SetBool("SitStill", false);
+        }
+        else
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", false);
         }
 
         //addforce left or right
@@ -261,36 +263,35 @@ public class PlayerController : MonoBehaviour {
             {
                 StopCoroutine("SittingStill");
                 anim.SetBool("SitStill", false);
-                anim.SetBool("Shoot", true);
-                shoot = false;
-
-                audioSource.PlayOneShot(shot, 0.7f);
+                shoot = false;              
 
                 //Spawn muzzle flash
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
                 {
                     //muzzleflash
                     Quaternion direction = Quaternion.Euler(-90f, 90f, 90f);
                     var newFlash = Instantiate(muzzleFlash, muzzleUp.transform.position, direction);
-                    newFlash.transform.parent = gameObject.transform;
                     newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
 
                     //bullet
                     Instantiate(BulletUp, muzzleUp.transform.position, transform.rotation);
+                    anim.SetBool("Shoot", true);
+                    audioSource.PlayOneShot(shot, 0.7f);
                 }
-                else if (Input.GetKey(KeyCode.DownArrow))
+                else if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
                 {
                     //muzzleflash
                     Quaternion direction = Quaternion.Euler(90f, 90f, 90f);
                     var newFlash = Instantiate(muzzleFlash, muzzleDown.transform.position, direction);
-                    newFlash.transform.parent = gameObject.transform;
                     newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
 
                     //bullet
                     Instantiate(BulletDown, muzzleDown.transform.position, transform.rotation);
+                    anim.SetBool("Shoot", true);
+                    audioSource.PlayOneShot(shot, 0.7f);
                 }
                 //if shooting behind
-                else if ((Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.A)))
+                else if (((Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.A))) && !(Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
                 {
                     Quaternion direction;
 
@@ -306,11 +307,13 @@ public class PlayerController : MonoBehaviour {
                     }
 
                     var newFlash = Instantiate(muzzleFlash, muzzleBehind.transform.position, direction);
-                    newFlash.transform.parent = gameObject.transform;
                     newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                    anim.SetBool("Shoot", true);
+                    audioSource.PlayOneShot(shot, 0.7f);
                 }
                 //if shooting straight
-                else
+                else if((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) && !(Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
                 {
                     Quaternion direction;
 
@@ -326,8 +329,10 @@ public class PlayerController : MonoBehaviour {
                     }
 
                     var newFlash = Instantiate(muzzleFlash, muzzleHorizontal.transform.position, direction);
-                    newFlash.transform.parent = gameObject.transform;
                     newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                    anim.SetBool("Shoot", true);
+                    audioSource.PlayOneShot(shot, 0.7f);
                 }
 
                 StartCoroutine("ShootCooldown");
@@ -386,7 +391,7 @@ public class PlayerController : MonoBehaviour {
 
         anim.SetBool("Shoot", false);
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         shoot = true;
     }

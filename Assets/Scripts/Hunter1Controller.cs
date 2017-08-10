@@ -19,8 +19,16 @@ public class Hunter1Controller : MonoBehaviour {
 	private Collider2D col;
 	private Vector2 size;
 
-	//Animator
-	private Animator anim;
+    //Shooting variables
+    private bool shootCooldown = false;
+    private bool shootNow = false;
+    public GameObject gunTip;
+    public GameObject bulletLeft;
+    public GameObject bulletRight;
+    public GameObject muzzleFlash;
+
+    //Animator
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -59,9 +67,6 @@ public class Hunter1Controller : MonoBehaviour {
 	//Control left and right and shoot
 	void HunterMovement(){
 
-		bool shootNow = true;
-		bool shootCooldown = false;
-
 		//If hit a wall, turn around
 		if(WallCheck() || EdgeCheck()){
 			direction *= -1;
@@ -76,7 +81,7 @@ public class Hunter1Controller : MonoBehaviour {
 		if(!PlayerCheck())
 		{
 			//start walking
-			//anim.SetBool("Walk", true);
+			anim.SetBool("Walk", true);
 
 			//get current velocity
 			vel = Mathf.Abs(rb.velocity.x);
@@ -93,19 +98,16 @@ public class Hunter1Controller : MonoBehaviour {
 		}
 		else{
 			//change animation to shooting
-			//anim.SetBool("Walk", false);
+			anim.SetBool("Walk", false);
 
-			//start coroutine for shoot countdown
-			//after shot start coroutine for cooldown
-
+            //If not on cooldown
 			if(!shootCooldown){
-				
+                shootCooldown = true;
+
+                anim.SetBool("Shoot", true);
+                StartCoroutine("ShootCooldown"); 
 			}
-
-			//if shot is not on cooldown, run animation again for shooting
-			//else idle in standing position
-
-		}
+        }
 	}
 
 	//Wall Check
@@ -198,4 +200,36 @@ public class Hunter1Controller : MonoBehaviour {
 	public void Hit(int damage){
 		life -= damage;
 	}
+
+    void Shoot()
+    {
+        //spawn bullet and muzzleflash based on direction
+        if (Mathf.Sign(transform.localScale.x) == 1)
+        {
+            Quaternion direction = Quaternion.Euler(0f, 90f, 90f);
+            var newFlash = Instantiate(muzzleFlash, gunTip.transform.position, direction);
+            newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            Instantiate(bulletRight, gunTip.transform.position, transform.rotation);
+        }
+        else
+        {
+            Quaternion direction = Quaternion.Euler(-180f, 90f, 90f);
+            var newFlash = Instantiate(muzzleFlash, gunTip.transform.position, direction);
+            newFlash.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            Instantiate(bulletLeft, gunTip.transform.position, transform.rotation);
+        }
+    }
+
+    //Shot cooldown
+    IEnumerator ShootCooldown()
+    {
+        yield return new WaitForSeconds(0.4f);
+        Shoot();
+        anim.SetBool("Shoot", false);
+
+        yield return new WaitForSeconds(2f);
+        shootCooldown = false;
+    }
 }

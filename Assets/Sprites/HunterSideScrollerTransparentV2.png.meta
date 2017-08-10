@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ad8964c456076834d9bfe97e8f9f29b5
-timeCreated: 1502205984
+timeCreated: 1502320269
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,6 +25,8 @@ TextureImporter:
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -40,10 +42,13 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: -1
     mipBias: -1
-    wrapMode: -1
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -110,6 +115,7 @@ TextureImporter:
       pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_1
@@ -123,6 +129,7 @@ TextureImporter:
       pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_2
@@ -136,6 +143,7 @@ TextureImporter:
       pivot: {x: 0.2940677, y: 0.49999967}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_3
@@ -149,6 +157,7 @@ TextureImporter:
       pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_4
@@ -162,6 +171,7 @@ TextureImporter:
       pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_5
@@ -175,6 +185,7 @@ TextureImporter:
       pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_6
@@ -188,6 +199,7 @@ TextureImporter:
       pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_7
@@ -201,6 +213,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_8
@@ -210,10 +223,11 @@ TextureImporter:
         y: 13
         width: 22
         height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_9
@@ -223,10 +237,11 @@ TextureImporter:
         y: 13
         width: 22
         height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_10
@@ -236,10 +251,11 @@ TextureImporter:
         y: 13
         width: 22
         height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_11
@@ -249,10 +265,11 @@ TextureImporter:
         y: 13
         width: 22
         height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2374356, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
       name: HunterSideScrollerTransparentV2_12
@@ -266,8 +283,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      physicsShape: []
       tessellationDetail: 0
     outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

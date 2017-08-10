@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Hunter1Controller.cs" />
     <Compile Include="Assets\Scripts\MuzzleFlashLife.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TrapScript.cs" />

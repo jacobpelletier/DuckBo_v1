@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour {
     private float spotEnd;
 
   void Start (){
+    player = GameObject.Find("Player");
+    map = GameObject.FindWithTag("Map");
     mapSR = map.GetComponent<SpriteRenderer>();
 
     //Get cam width and height
