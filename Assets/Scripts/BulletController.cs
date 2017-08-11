@@ -79,10 +79,10 @@ public class BulletController : MonoBehaviour {
         //if it collides with something that's not the player, destroy
         if(collider.tag != "Player")
         {
-            if (!enemyBullet && collider.tag == "Hunter")
+            if (!enemyBullet && collider.tag != "Hunter")
             {
                 Destroy(gameObject);
-            }           
+            }
         }
         else if (collider.tag == "Player" && enemyBullet){
             playerScript.Death();
@@ -92,6 +92,7 @@ public class BulletController : MonoBehaviour {
         if(collider.tag == "Hunter" && !enemyBullet){
           Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
           instance.Hit(damage);
+          Destroy(gameObject);
         }
     }
 

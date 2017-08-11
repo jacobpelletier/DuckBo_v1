@@ -10,13 +10,11 @@ public class PlayButton : MonoBehaviour {
 		activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
 	}
 
-	void Update(){
-		if(Input.GetKey(KeyCode.Return)){
-			StartCoroutine("StartGame");
-		}
+	void OnMouseDown(){
+		StartGames();
 	}
 
-	void OnMouseDown(){
+	public void StartGames(){
 		StartCoroutine("StartGame");
 	}
 

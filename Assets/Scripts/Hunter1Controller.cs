@@ -11,6 +11,7 @@ public class Hunter1Controller : MonoBehaviour {
 
 	//Grab active playerScript
 	private PlayerController playerScript;
+	private GameObject player;
 
 	//grab tools for movement and raycasts
 	private Rigidbody2D rb;
@@ -32,7 +33,8 @@ public class Hunter1Controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Find player in game, grab our rigidbody and collider
-		playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+		player = GameObject.Find("Player");
+		playerScript = player.GetComponent<PlayerController>();
 		rb = GetComponent<Rigidbody2D>();
 		col = GetComponent<Collider2D>();
 		anim = GetComponent<Animator>();
@@ -68,12 +70,7 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//If hit a wall, turn around
 		if(WallCheck() || EdgeCheck()){
-			direction *= -1;
-
-			float temp = transform.localScale.x * -1;
-			Vector3 temp2 = transform.localScale;
-			temp2.x = temp;
-			transform.localScale = temp2;
+			Flip();
 		}
 
 		//If not looking at player
@@ -198,6 +195,16 @@ public class Hunter1Controller : MonoBehaviour {
 	//public function to apply damage to Hunter
 	public void Hit(int damage){
 		life -= damage;
+		if(direction.x > 0){
+			if(player.transform.position.x < transform.position.x){
+				Flip();
+			}
+		}
+		else{
+			if(player.transform.position.x > transform.position.x){
+				Flip();
+			}
+		}
 	}
 
     void Shoot()
@@ -220,6 +227,15 @@ public class Hunter1Controller : MonoBehaviour {
             Instantiate(bulletLeft, gunTip.transform.position, transform.rotation);
         }
     }
+
+		void Flip(){
+			direction *= -1;
+
+			float temp = transform.localScale.x * -1;
+			Vector3 temp2 = transform.localScale;
+			temp2.x = temp;
+			transform.localScale = temp2;
+		}
 
     //Shot cooldown
     IEnumerator ShootCooldown()

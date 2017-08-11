@@ -12,11 +12,15 @@ public class ExitButton : MonoBehaviour {
 
 	void Update(){
 		if(Input.GetKeyDown(KeyCode.Escape)){
-			StartCoroutine("Escape");
+			Escaped();
 		}
 	}
 
 	void OnMouseDown(){
+		Escaped();
+	}
+
+	public void Escaped(){
 		StartCoroutine("Escape");
 	}
 

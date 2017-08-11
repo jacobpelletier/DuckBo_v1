@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
 
 	public float maxLevel;
 
+	private float topLevel = 2;
+
 	//Runs before start
 	void Awake()
 	{
@@ -33,12 +35,23 @@ public class GameController : MonoBehaviour {
 
 	//On play, load level
 	public void StartGame(float level){
+		GameController.control.Save();
 		if(level != 0){
-			SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
+			if(maxLevel < topLevel){
+				SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
+			}
+			else{
+				SceneManager.LoadScene("MainMenu",LoadSceneMode.Single);
+			}
 		}
 		else{
 			SceneManager.LoadScene("MainMenu",LoadSceneMode.Single);
 		}
+	}
+
+	public void LevelWin(){
+		maxLevel += 1f;
+		StartGame(maxLevel);
 	}
 
 	public void Save()

@@ -78,7 +78,12 @@ public class CameraController : MonoBehaviour {
       }
 	}
 
+  //Graphics User Interface
   void OnGUI(){
+
+    if (GUI.Button(new Rect(10, 70, 50, 30), "ResetLevel"))
+            GameController.control.maxLevel = 1;
+    //Fading code
     if(fadeIn && !fadeOut){
       alpha += fadeDir * fadeSpeed * Time.deltaTime;
       alpha = Mathf.Clamp01(alpha);

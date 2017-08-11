@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour {
     private Collider2D col;
     private AudioSource audioSource;
 
+    //Camera active
+    CameraController activeCamera;
+
     // Starts before Start function
     void Awake()
     {
@@ -54,10 +57,13 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
+        activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
     }
 
     // Use this for initialization
     void Start () {
+        //Initialize on Start
+        transform.position = Respawn.transform.position;
 
         //face a direction with scale
         faceRight = transform.localScale.x;
@@ -138,7 +144,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 temp = transform.localScale;
             temp.x = faceRight;
             transform.localScale = temp;
-            
+
             anim.SetBool("Walk", true);
 
             //if holding opposite shoot, shoot behind
@@ -263,7 +269,7 @@ public class PlayerController : MonoBehaviour {
             {
                 StopCoroutine("SittingStill");
                 anim.SetBool("SitStill", false);
-                shoot = false;              
+                shoot = false;
 
                 //Spawn muzzle flash
                 if (Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
@@ -350,8 +356,8 @@ public class PlayerController : MonoBehaviour {
     //function DEATH... KILL HIM
     public void Death()
     {
-        transform.position = Respawn.transform.position;
         audioSource.PlayOneShot(death, 0.7f);
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     //Check for grounded with raycasts
@@ -376,6 +382,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    //Touches end level
+    void OnCollisionEnter2D(Collision2D coll){
+      if(coll.gameObject.tag == "Finish"){
+        StartCoroutine("EndLevel");
+
+      }
+    }
+
     //cooldown for LOOOOONG idle
     IEnumerator SittingStill()
     {
@@ -394,5 +408,14 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
 
         shoot = true;
+    }
+
+    //EndLevel
+    IEnumerator EndLevel()
+    {
+      activeCamera.fadeOut = true;
+
+      yield return new WaitForSeconds(4f);
+      GameController.control.LevelWin();
     }
 }
