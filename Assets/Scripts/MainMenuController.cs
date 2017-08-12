@@ -151,6 +151,7 @@ public class MainMenuController : MonoBehaviour {
 				exitCheck.SetActive(false);
 			}
 
+			//If on Leave button
 			if(selectLeave){
 				leaveButton.color = Color.black;
 				backButton.color = Color.white;
