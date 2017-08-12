@@ -11,9 +11,11 @@ public class GameController : MonoBehaviour {
 	//To store active gamecontroller
 	public static GameController control;
 
-	public float maxLevel;
+	//Level selection and start
+	public float maxLevel = 15;
+	public float currentLevel = 1;
 
-	private float topLevel = 2;
+	public bool checkPoint = false;
 
 	//Runs before start
 	void Awake()
@@ -36,35 +38,47 @@ public class GameController : MonoBehaviour {
 	//On play, load level
 	public void StartGame(float level){
 		GameController.control.Save();
+		checkPoint = false;
+
 		if(level != 0){
-			if(maxLevel < topLevel){
+			if(currentLevel <= maxLevel){
 				SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
 			}
 			else{
 				SceneManager.LoadScene("MainMenu",LoadSceneMode.Single);
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+				currentLevel = maxLevel;
 			}
 		}
 		else{
 			SceneManager.LoadScene("MainMenu",LoadSceneMode.Single);
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 		}
 	}
 
 	public void LevelWin(){
-		maxLevel += 1f;
-		StartGame(maxLevel);
+		currentLevel += 1f;
+		StartGame(currentLevel);
 	}
 
 	public void Save()
 	{
+		Debug.Log("Saving...");
 		BinaryFormatter bf = new BinaryFormatter();
 		Debug.Log(Application.persistentDataPath + "/playerInfo.duck");
 		FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.duck");
 
 		PlayerData data = new PlayerData();
 		data.maxLevel = maxLevel;
+		data.currentLevel = currentLevel;
 
 		bf.Serialize(file, data);
 		file.Close();
+		Debug.Log("Saved!");
 	}
 
 	public void Load()
@@ -78,6 +92,7 @@ public class GameController : MonoBehaviour {
 			file.Close();
 
 			maxLevel = data.maxLevel;
+			currentLevel = data.currentLevel;
 		}
 		else{
 			Debug.Log("No saved file found");
@@ -93,5 +108,6 @@ public class GameController : MonoBehaviour {
 	[Serializable]
 	class PlayerData{
 		public float maxLevel;
+		public float currentLevel;
 	}
 }

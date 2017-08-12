@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class PlayButton : MonoBehaviour {
 
-	CameraController activeCamera;
-
-	void Awake(){
-		activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
-	}
+	public GameObject levelScreen;
 
 	void OnMouseDown(){
-		StartGames();
+		levelScreen.SetActive(true);
 	}
 
 	public void StartGames(){
-		StartCoroutine("StartGame");
-	}
-
-	IEnumerator StartGame(){
-		GameController.control.Save();
-		activeCamera.fadeOut = true;
-
-		yield return new WaitForSeconds(4f);
-		GameController.control.StartGame(GameController.control.maxLevel);
+		levelScreen.SetActive(true);
 	}
 }

@@ -20,10 +20,9 @@ public class CameraController : MonoBehaviour {
 
     //For fading
     public Texture2D fadeTexture;
-    float fadeSpeed = 0.2f;
+    float fadeSpeed = 1f;
     int drawDepth = -1000;
     private float alpha = 1f;
-    private float alphaIn = 0f;
     private float fadeDir = -1f;
     public bool fadeOut = false;
     public bool fadeIn = true;
@@ -81,8 +80,8 @@ public class CameraController : MonoBehaviour {
   //Graphics User Interface
   void OnGUI(){
 
-    if (GUI.Button(new Rect(10, 70, 50, 30), "ResetLevel"))
-            GameController.control.maxLevel = 1;
+    if (GUI.Button(new Rect(10, 70, 100, 30), "ResetLevel"))
+            GameController.control.currentLevel = 1;
     //Fading code
     if(fadeIn && !fadeOut){
       alpha += fadeDir * fadeSpeed * Time.deltaTime;

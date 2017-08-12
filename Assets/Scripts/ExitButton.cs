@@ -5,15 +5,11 @@ using UnityEngine;
 public class ExitButton : MonoBehaviour {
 
 	CameraController activeCamera;
+	public GameObject exitScreen;
+
 
 	void Awake(){
 		activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
-	}
-
-	void Update(){
-		if(Input.GetKeyDown(KeyCode.Escape)){
-			Escaped();
-		}
 	}
 
 	void OnMouseDown(){
@@ -21,6 +17,10 @@ public class ExitButton : MonoBehaviour {
 	}
 
 	public void Escaped(){
+		exitScreen.SetActive(true);
+	}
+
+	public void QuitGame(){
 		StartCoroutine("Escape");
 	}
 
