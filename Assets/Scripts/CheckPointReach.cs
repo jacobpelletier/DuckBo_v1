@@ -8,9 +8,6 @@ public class CheckPointReach : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		player = GameObject.FindWithTag("Player");
-		if(GameController.control.checkPoint){
-			player.transform.position = transform.position;
-		}
 	}
 
 	void Start() {

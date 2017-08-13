@@ -16,6 +16,9 @@ public class BulletController : MonoBehaviour {
     //Bullet RigidBody
     private Rigidbody2D rb;
 
+    //BloodSplatter
+    public GameObject blood;
+
 	// Use this for initialization
 	void Start () {
         //Grab player currently active and get rigidbody
@@ -88,6 +91,7 @@ public class BulletController : MonoBehaviour {
         //if it collides with hunter 1, get script and run hit function
         if(collider.tag == "Hunter" && !enemyBullet){
           Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
+          Instantiate(blood, transform.position, transform.rotation);
           instance.Hit(damage);
           Destroy(gameObject);
         }

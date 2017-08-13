@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CameraController : MonoBehaviour {
 
@@ -82,6 +83,16 @@ public class CameraController : MonoBehaviour {
 
     if (GUI.Button(new Rect(10, 70, 100, 30), "ResetLevel"))
             GameController.control.currentLevel = 1;
+
+    if (GUI.Button(new Rect(10, 100, 100, 30), "DeleteSave")){
+      File.Delete(Application.persistentDataPath + "/playerInfo.duck");
+      RefreshEditorProjectWindow();
+
+      GameController.control.maxLevel = 15;
+      GameController.control.playingLevel = 1;
+      GameController.control.currentLevel = 1;
+    }
+
     //Fading code
     if(fadeIn && !fadeOut){
       alpha += fadeDir * fadeSpeed * Time.deltaTime;
@@ -108,4 +119,11 @@ public class CameraController : MonoBehaviour {
       GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), fadeTexture);
     }
   }
+
+  void RefreshEditorProjectWindow()
+     {
+         #if UNITY_EDITOR
+         UnityEditor.AssetDatabase.Refresh();
+         #endif
+     }
 }

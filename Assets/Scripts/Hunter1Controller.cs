@@ -69,8 +69,9 @@ public class Hunter1Controller : MonoBehaviour {
 	void HunterMovement(){
 
 		//If hit a wall, turn around
-		if(WallCheck() || EdgeCheck()){
-			Flip();
+		if(WallCheck() == true || EdgeCheck() == true){
+			Debug.Log("trigger");
+			FlipThis();
 		}
 
 		//If not looking at player
@@ -112,17 +113,18 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//origin of ray
 		if(direction.x > 0){
-			rayOrigin = transform.position + new Vector3(size.x / 2 + 0.05f,0);
+			rayOrigin = transform.position + new Vector3(size.x / 2 + 0.1f,0,0);
 		}
 		else{
-			rayOrigin = transform.position - new Vector3(size.x / 2 + 0.05f,0);
+			rayOrigin = transform.position - new Vector3(size.x / 2 + 0.1f,0,0);
 		}
 
 		//extend ray in direction of player
-		RaycastHit2D wallCheck = Physics2D.Raycast(rayOrigin,direction,0.05f);
+		RaycastHit2D wallCheck = Physics2D.Raycast(rayOrigin,direction,0.1f);
 
 		//if wall, return true
 		if(wallCheck.collider != null){
+			Debug.Log("wallCheck");
 			return true;
 		}
 		else{
@@ -136,17 +138,18 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//origin of ray
 		if(direction.x > 0){
-			rayOrigin = transform.position + new Vector3(size.x / 2, -size.y / 2 - 0.05f);
+			rayOrigin = transform.position + new Vector3(size.x / 2, -size.y / 2 - 0.1f);
 		}
 		else{
-			rayOrigin = transform.position + new Vector3(-size.x / 2, -size.y / 2 - 0.05f);
+			rayOrigin = transform.position + new Vector3(-size.x / 2, -size.y / 2 - 0.1f);
 		}
 
 		//extend ray in direction of player
-		RaycastHit2D edgeCheck = Physics2D.Raycast(rayOrigin,Vector2.down,0.05f);
+		RaycastHit2D edgeCheck = Physics2D.Raycast(rayOrigin,Vector2.down,0.1f);
 
 		//if wall, return true
 		if(edgeCheck.collider == null){
+			Debug.Log("edgeCheck");
 			return true;
 		}
 		else{
@@ -195,14 +198,16 @@ public class Hunter1Controller : MonoBehaviour {
 	//public function to apply damage to Hunter
 	public void Hit(int damage){
 		life -= damage;
+		anim.SetBool("Hit",true);
+		StartCoroutine("HitTime");
 		if(direction.x > 0){
 			if(player.transform.position.x < transform.position.x){
-				Flip();
+				FlipThis();
 			}
 		}
 		else{
 			if(player.transform.position.x > transform.position.x){
-				Flip();
+				FlipThis();
 			}
 		}
 	}
@@ -228,9 +233,8 @@ public class Hunter1Controller : MonoBehaviour {
         }
     }
 
-		void Flip(){
+		void FlipThis(){
 			direction *= -1;
-
 			float temp = transform.localScale.x * -1;
 			Vector3 temp2 = transform.localScale;
 			temp2.x = temp;
@@ -247,4 +251,9 @@ public class Hunter1Controller : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         shootCooldown = false;
     }
+
+		IEnumerator HitTime(){
+			yield return new WaitForSeconds(0.3f);
+			anim.SetBool("Hit",false);
+		}
 }
