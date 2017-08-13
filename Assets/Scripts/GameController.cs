@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	public static GameController control;
 
 	//Level selection and start
+	public float playingLevel =1; //Level currently playing on
 	public float maxLevel = 15;
 	public float currentLevel = 1;
 
@@ -42,6 +43,7 @@ public class GameController : MonoBehaviour {
 
 		if(level != 0){
 			if(currentLevel <= maxLevel){
+				playingLevel = level;
 				SceneManager.LoadScene("Level" + level, LoadSceneMode.Single);
 				Cursor.lockState = CursorLockMode.Locked;
 				Cursor.visible = false;
@@ -61,7 +63,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void LevelWin(){
-		currentLevel += 1f;
+		//If the level we're playing is the newest level, then add to current level
+		if(playingLevel == currentLevel){
+			currentLevel += 1f;
+		}
 		StartGame(currentLevel);
 	}
 
