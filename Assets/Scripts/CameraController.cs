@@ -93,6 +93,10 @@ public class CameraController : MonoBehaviour {
       GameController.control.currentLevel = 1;
     }
 
+    if(GUI.Button(new Rect(10, 130, 100, 30), "DeleteCollects")){
+      GameController.control.collectables = new bool[50];
+    }
+
     //Fading code
     if(fadeIn && !fadeOut){
       alpha += fadeDir * fadeSpeed * Time.deltaTime;

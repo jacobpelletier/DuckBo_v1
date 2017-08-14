@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public float currentLevel = 1;
 
 	public bool checkPoint = false;
+	public bool[] collectables;
 
 	//Runs before start
 	void Awake()
@@ -28,6 +29,9 @@ public class GameController : MonoBehaviour {
 		else if(control != this){
 			Destroy(gameObject);
 		}
+
+		collectables = new bool[50];
+		
 	}
 
 	//Start
@@ -70,6 +74,10 @@ public class GameController : MonoBehaviour {
 		StartGame(currentLevel);
 	}
 
+	public void Collect(int collected){
+		collectables[collected] = true;
+	}
+
 	public void Save()
 	{
 		Debug.Log("Saving...");
@@ -80,6 +88,7 @@ public class GameController : MonoBehaviour {
 		PlayerData data = new PlayerData();
 		data.maxLevel = maxLevel;
 		data.currentLevel = currentLevel;
+		data.collectables = collectables;
 
 		bf.Serialize(file, data);
 		file.Close();
@@ -98,6 +107,7 @@ public class GameController : MonoBehaviour {
 
 			maxLevel = data.maxLevel;
 			currentLevel = data.currentLevel;
+			collectables = data.collectables;
 		}
 		else{
 			Debug.Log("No saved file found");
@@ -114,5 +124,6 @@ public class GameController : MonoBehaviour {
 	class PlayerData{
 		public float maxLevel;
 		public float currentLevel;
+		public bool[] collectables;
 	}
 }

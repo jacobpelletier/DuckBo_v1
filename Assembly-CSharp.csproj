@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CheckPointReach.cs" />
+     <Compile Include="Assets\Scripts\CollectableScript.cs" />
      <Compile Include="Assets\Scripts\EmptyLevel.cs" />
      <Compile Include="Assets\Scripts\ExitButton.cs" />
      <Compile Include="Assets\Scripts\FloatingMovement.cs" />

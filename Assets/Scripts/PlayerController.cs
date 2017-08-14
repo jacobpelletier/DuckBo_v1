@@ -228,7 +228,7 @@ public class PlayerController : MonoBehaviour {
         float velY = myBody.velocity.y;
 
         //if jump pressed && !still pressed && grounded = jump
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             bool isGrounded = GroundCheck();
 

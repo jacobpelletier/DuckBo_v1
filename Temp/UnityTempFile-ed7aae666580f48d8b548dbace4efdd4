@@ -86,6 +86,7 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
+'Assets/Scripts/BloodSplatterLife.cs'
 'Assets/Scripts/BulletController.cs'
 'Assets/Scripts/CameraController.cs'
 'Assets/Scripts/CheckPointReach.cs'
