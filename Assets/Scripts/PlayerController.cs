@@ -134,6 +134,12 @@ public class PlayerController : MonoBehaviour {
         // if Right
         if (Input.GetKey(KeyCode.D))
         {
+          if(rawVel < 0){
+            Vector2 temp2 = myBody.velocity;
+            temp2.x = 0f;
+            myBody.velocity = temp2;
+          }
+
             StopCoroutine("SittingStill");
             anim.SetBool("SitStill", false);
 
@@ -160,6 +166,13 @@ public class PlayerController : MonoBehaviour {
         // if Left
         else if (Input.GetKey(KeyCode.A))
         {
+
+            if(rawVel > 0){
+              Vector2 temp2 = myBody.velocity;
+              temp2.x = 0f;
+              myBody.velocity = temp2;
+            }
+
             StopCoroutine("SittingStill");
             anim.SetBool("SitStill", false);
 
@@ -393,7 +406,6 @@ public class PlayerController : MonoBehaviour {
     //Touches OneWay
     void OnCollisionStay2D(Collision2D coll){
       if(Input.GetKey(KeyCode.S) && coll.gameObject.tag == "OneWay"){
-        Debug.Log("should work");
         coll.collider.enabled = false;
       }
     }
