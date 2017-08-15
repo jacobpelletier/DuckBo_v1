@@ -390,6 +390,14 @@ public class PlayerController : MonoBehaviour {
       }
     }
 
+    //Touches OneWay
+    void OnCollisionStay2D(Collision2D coll){
+      if(Input.GetKey(KeyCode.S) && coll.gameObject.tag == "OneWay"){
+        Debug.Log("should work");
+        coll.collider.enabled = false;
+      }
+    }
+
     //cooldown for LOOOOONG idle
     IEnumerator SittingStill()
     {

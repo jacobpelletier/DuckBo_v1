@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\MovingBackground.cs" />
      <Compile Include="Assets\Scripts\MuzzleFlashLife.cs" />
+     <Compile Include="Assets\Scripts\OneWayScript.cs" />
      <Compile Include="Assets\Scripts\PlayButton.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\ResizeBackground.cs" />
