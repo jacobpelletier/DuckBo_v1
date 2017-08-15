@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on Hunter prefab
 public class Hunter1Controller : MonoBehaviour {
 
 	//Hunter movement and life
@@ -70,7 +71,6 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//If hit a wall, turn around
 		if(WallCheck() == true || EdgeCheck() == true){
-			Debug.Log("trigger");
 			FlipThis();
 		}
 
@@ -124,7 +124,6 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//if wall, return true
 		if(wallCheck.collider != null){
-			Debug.Log("wallCheck");
 			return true;
 		}
 		else{
@@ -149,7 +148,6 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//if wall, return true
 		if(edgeCheck.collider == null){
-			Debug.Log("edgeCheck");
 			return true;
 		}
 		else{
@@ -197,9 +195,14 @@ public class Hunter1Controller : MonoBehaviour {
 
 	//public function to apply damage to Hunter
 	public void Hit(int damage){
+		//if hit subtract damage
 		life -= damage;
+
+		//start hit animation, and cooldown to end it
 		anim.SetBool("Hit",true);
 		StartCoroutine("HitTime");
+
+		//if hit and not facing the player, flip it!
 		if(direction.x > 0){
 			if(player.transform.position.x < transform.position.x){
 				FlipThis();
@@ -212,6 +215,7 @@ public class Hunter1Controller : MonoBehaviour {
 		}
 	}
 
+		//Hunter shooting
     void Shoot()
     {
         //spawn bullet and muzzleflash based on direction
@@ -233,8 +237,13 @@ public class Hunter1Controller : MonoBehaviour {
         }
     }
 
+		//code to flip hunter around
 		void FlipThis(){
+
+			//sets an inverted direction for raycasts
 			direction *= -1;
+
+			//flips the transform
 			float temp = transform.localScale.x * -1;
 			Vector3 temp2 = transform.localScale;
 			temp2.x = temp;
@@ -244,14 +253,17 @@ public class Hunter1Controller : MonoBehaviour {
     //Shot cooldown
     IEnumerator ShootCooldown()
     {
+				//after 0.4s, Shoot at tip of animation, then start cooldown
         yield return new WaitForSeconds(0.4f);
         Shoot();
         anim.SetBool("Shoot", false);
 
+				//after cooldown, set cooldown to false
         yield return new WaitForSeconds(1f);
         shootCooldown = false;
     }
 
+		//Time between Hit animations
 		IEnumerator HitTime(){
 			yield return new WaitForSeconds(0.3f);
 			anim.SetBool("Hit",false);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on specific bullet prefab
 public class BulletController : MonoBehaviour {
 
     //Bullet movement and damage variables
@@ -79,8 +80,8 @@ public class BulletController : MonoBehaviour {
     //If bullet hits a collider, and it's not player, destroy bullet
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //if it collides with something that's not the player, destroy
-        if(collider.tag != "Player")
+        //if it collides with something that's not the player or a collectable, destroy
+        if(collider.tag != "Player" && collider.tag != "Collectable" && collider.tag != "Checkpoint")
         {
             Destroy(gameObject);
         }
@@ -88,7 +89,7 @@ public class BulletController : MonoBehaviour {
             playerScript.Death();
         }
 
-        //if it collides with hunter 1, get script and run hit function
+        //if it collides with hunter 1, get script and run hit function and show bloodSplat
         if(collider.tag == "Hunter" && !enemyBullet){
           Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
           Instantiate(blood, transform.position, transform.rotation);

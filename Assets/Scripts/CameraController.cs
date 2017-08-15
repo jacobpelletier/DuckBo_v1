@@ -31,8 +31,12 @@ public class CameraController : MonoBehaviour {
     //Check for mainMenu
     public bool mainMenu = false;
 
+  //On Camera initialization
   void Start (){
+    //If this is not the main menu, we need to position the camera appropriately
     if(!mainMenu){
+
+      //grab the player and map objects and find the map sprite renderer
       player = GameObject.Find("Player");
       map = GameObject.FindWithTag("Map");
       mapSR = map.GetComponent<SpriteRenderer>();
@@ -47,13 +51,17 @@ public class CameraController : MonoBehaviour {
       spotBegin = map.transform.position.x - halfMap + (width / 2);
       spotEnd = map.transform.position.x + halfMap - (width / 2);
 
+      //set camera position in the bottom-left most corner, pretty dope
       this.transform.position = new Vector3(spotBegin,0,-10);
     }
   }
 
 	// Update is called once per frame
 	void Update () {
+      //Again if not the main menu...
       if (!mainMenu){
+
+        //sets camera position to player position, with a z distance for camera sight
         Vector3 temp = player.transform.position;
         temp.z = -10;
 
@@ -73,7 +81,7 @@ public class CameraController : MonoBehaviour {
             temp.x = spotEnd;
         }
 
-        //set camera pos
+        //set camera pos, basically it follows the player side to side and down to a certain y
         this.transform.position = temp;
       }
 	}
@@ -81,9 +89,11 @@ public class CameraController : MonoBehaviour {
   //Graphics User Interface
   void OnGUI(){
 
+    //Reloads level
     if (GUI.Button(new Rect(10, 70, 100, 30), "ResetLevel"))
-            GameController.control.currentLevel = 1;
+      Application.LoadLevel(Application.loadedLevel);
 
+    //Deletes old save, and sets values to default
     if (GUI.Button(new Rect(10, 100, 100, 30), "DeleteSave")){
       File.Delete(Application.persistentDataPath + "/playerInfo.duck");
       RefreshEditorProjectWindow();
@@ -93,6 +103,7 @@ public class CameraController : MonoBehaviour {
       GameController.control.currentLevel = 1;
     }
 
+    //Delete objects collected, yayyy
     if(GUI.Button(new Rect(10, 130, 100, 30), "DeleteCollects")){
       GameController.control.collectables = new bool[50];
     }
@@ -124,6 +135,7 @@ public class CameraController : MonoBehaviour {
     }
   }
 
+  //Refreshes Project Window so that it recognizes that the save was deleted
   void RefreshEditorProjectWindow()
      {
          #if UNITY_EDITOR

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on main menu backgrounds
 public class MovingBackground : MonoBehaviour {
 
 	public float speed = 5f;

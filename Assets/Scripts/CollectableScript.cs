@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on collectable prefab
 public class CollectableScript : MonoBehaviour {
 
 	public int id = 0;

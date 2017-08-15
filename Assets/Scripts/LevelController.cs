@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Goes on each levels main background
 public class LevelController : MonoBehaviour {
 
 	CameraController activeCamera;
@@ -25,14 +26,14 @@ public class LevelController : MonoBehaviour {
 
 			//should pause
 			if(!pause){
-				pauseMenu.SetActive(true);
-				Time.timeScale = 0f;
-				pause = true;
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
+				pauseMenu.SetActive(true); 								// shows pause menu
+				Time.timeScale = 0f;											// pauses time
+				pause = true;															// sets bool for pause to true
+				Cursor.lockState = CursorLockMode.None;		// sets cursor to unlocked
+				Cursor.visible = true;										// sets cursor to visible
 			}
 			else{
-				pauseMenu.SetActive(false);
+				pauseMenu.SetActive(false);								//Does the opposite of the above ^
 				Time.timeScale = 1f;
 				pause = false;
 				Cursor.lockState = CursorLockMode.Locked;
@@ -40,8 +41,11 @@ public class LevelController : MonoBehaviour {
 			}
 		}
 
+		//If pause menu is active
 		if(pause){
+			//If user inputs up or down...
 			if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)){
+				//...flip the selections
 				bool temp = leave;
 				leave = resume;
 				resume = temp;
@@ -56,16 +60,20 @@ public class LevelController : MonoBehaviour {
 				}
 			}
 
+			//If user inputs enter/return...
 			if(Input.GetKeyDown(KeyCode.Return)){
+				//... and current selection is resume ...
 				if(resume){
+					//... set pause menu active to false, resume game
 					pauseMenu.SetActive(false);
 					Time.timeScale = 1f;
 					pause = false;
 					Cursor.lockState = CursorLockMode.Locked;
 					Cursor.visible = false;
 				}
+				//... and current selection is leave ...
 				else{
-					//Starts fade out and then leaves to menu
+					//... start the fade out and then leave to main menu
 					pauseMenu.SetActive(false);
 					Time.timeScale = 1f;
 					activeCamera.fadeOut = true;
@@ -75,8 +83,9 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
+	//Delay between transferring to main menu, waiting for fadeout
 	IEnumerator Exit(){
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(1f);
 		GameController.control.StartGame(0);
 	}
 }

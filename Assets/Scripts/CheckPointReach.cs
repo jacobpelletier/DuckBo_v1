@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on checkpoint prefab
 public class CheckPointReach : MonoBehaviour {
 
-	private GameObject player;
+	public GameObject respawn;
+
 	// Use this for initialization
 	void Awake () {
-		player = GameObject.FindWithTag("Player");
-	}
-
-	void Start() {
+		//If checkpoint has been reached previously, set respawn to checkpoint position
 		if(GameController.control.checkPoint){
-			player.transform.position = transform.position;
+			respawn.transform.position = transform.position;
 		}
 	}
 
-	//If player enters checkPoint field
+	//If player enters checkPoint field, save the data to GameController
 	void OnTriggerEnter2D(Collider2D collider){
 		if(collider.tag == "Player"){
 			GameController.control.checkPoint = true;

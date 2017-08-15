@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Goes on main menu background
 public class MainMenuController : MonoBehaviour {
 
 	//Grab buttons for selection

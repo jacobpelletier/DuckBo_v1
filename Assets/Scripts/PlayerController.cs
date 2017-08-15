@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on player in levels
 public class PlayerController : MonoBehaviour {
 
     //Adjustable Player Values
@@ -386,7 +387,6 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll){
       if(coll.gameObject.tag == "Finish"){
         StartCoroutine("EndLevel");
-
       }
     }
 

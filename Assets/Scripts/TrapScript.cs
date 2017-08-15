@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//goes on trap objects in maps
 public class TrapScript : MonoBehaviour {
 
     public PlayerController playerScript;

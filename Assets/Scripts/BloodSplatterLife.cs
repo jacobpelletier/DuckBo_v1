@@ -11,6 +11,7 @@ public class BloodSplatterLife : MonoBehaviour {
 		StartCoroutine("Lifetime");
 	}
 
+	//Deletes blood splatter after a time limit
 	IEnumerator Lifetime(){
 		yield return new WaitForSeconds(lifetime);
 		Destroy(gameObject);

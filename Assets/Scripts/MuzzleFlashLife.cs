@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Goes on muzzle flash prefab
 public class MuzzleFlashLife : MonoBehaviour {
 
 	// Use this for initialization
