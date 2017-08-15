@@ -101,6 +101,7 @@ public class CameraController : MonoBehaviour {
       GameController.control.maxLevel = 15;
       GameController.control.playingLevel = 1;
       GameController.control.currentLevel = 1;
+      GameController.control.collectables = new bool[50];
     }
 
     //Delete objects collected, yayyy
