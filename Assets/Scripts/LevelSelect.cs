@@ -35,4 +35,5 @@ public class LevelSelect : MonoBehaviour {
 		yield return new WaitForSeconds(1f);
 		GameController.control.StartGame(level);
 	}
+	
 }

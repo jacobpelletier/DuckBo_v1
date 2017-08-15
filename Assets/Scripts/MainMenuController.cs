@@ -88,7 +88,7 @@ public class MainMenuController : MonoBehaviour {
 			selectScript = selection.GetComponent<LevelSelect>();
 
 			//highlight selected component
-			change.color = Color.black;
+			change.color = Color.red;
 
 			//If user presses enter, call start level
 			if(Input.GetKeyDown(KeyCode.Return)){
@@ -154,7 +154,7 @@ public class MainMenuController : MonoBehaviour {
 
 			//If on Leave button
 			if(selectLeave){
-				leaveButton.color = Color.black;
+				leaveButton.color = Color.red;
 				backButton.color = Color.white;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitScript.QuitGame();
@@ -162,7 +162,7 @@ public class MainMenuController : MonoBehaviour {
 			}
 			else{
 				leaveButton.color = Color.white;
-				backButton.color = Color.black;
+				backButton.color = Color.red;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitCheck.SetActive(false);
 				}
