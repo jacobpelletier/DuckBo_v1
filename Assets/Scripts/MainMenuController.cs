@@ -13,17 +13,11 @@ public class MainMenuController : MonoBehaviour {
 	public PlayButton playScript;
 	public ExitButton exitScript;
 
-	//Grab spriterenderer and sprites for replacing
-	public Sprite playS;
-	public Sprite PLAY;
-	public Sprite exitS;
-	public Sprite EXIT;
-	private SpriteRenderer playSR;
-	private SpriteRenderer exitSR;
-
 	//Selection for main menu
 	private bool selectPlay = true;
 	private bool opposite = false;
+	public Image playButton;
+	public Image exitButton;
 
 	//Selection for levels
 	private float currentSelection;
@@ -38,20 +32,31 @@ public class MainMenuController : MonoBehaviour {
 	public Image leaveButton;
 	public Image backButton;
 
+	//Color variables
+	private Color faded;
+	private Color original;
+	private Color mainFaded;
+	private Color mainOriginal;
+
 	// Use this for initialization
 	void Start () {
-		playSR = play.GetComponent<SpriteRenderer>();
-		exitSR = exit.GetComponent<SpriteRenderer>();
-
 		playScript = play.GetComponent<PlayButton>();
 		exitScript = exit.GetComponent<ExitButton>();
 
 		currentSelection = GameController.control.currentLevel;
+
+		//COLORING
+		faded = new Color32(223,117,103,255);
+		original = faded;
+		faded.a = 0.5f;
+
+		mainFaded = new Color32(24,25,46,255);
+		mainOriginal = mainFaded;
+		mainFaded.a = 0.5f;
 	}
 
 	// Update is called once per frame
 	void Update () {
-
 		//if level screen is not active...
 		if(!levelScreen.activeSelf && !exitCheck.activeSelf){
 			//...and directional key is pressed
@@ -66,15 +71,15 @@ public class MainMenuController : MonoBehaviour {
 			}
 
 			if(selectPlay){
-				playSR.sprite = PLAY;
-				exitSR.sprite = exitS;
+				playButton.color = mainOriginal;
+				exitButton.color = mainFaded;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					playScript.StartGames();
 				}
 			}
 			else{
-				playSR.sprite = playS;
-				exitSR.sprite = EXIT;
+				playButton.color = mainFaded;
+				exitButton.color = mainOriginal;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitScript.Escaped();
 				}
@@ -88,7 +93,7 @@ public class MainMenuController : MonoBehaviour {
 			selectScript = selection.GetComponent<LevelSelect>();
 
 			//highlight selected component
-			change.color = Color.red;
+			change.color = original;
 
 			//If user presses enter, call start level
 			if(Input.GetKeyDown(KeyCode.Return)){
@@ -96,7 +101,7 @@ public class MainMenuController : MonoBehaviour {
 					selectScript.LoadLevel();
 				}
 				else{
-					change.color = Color.white;
+					change.color = faded;
 					levelScreen.SetActive(false);
 					currentSelection = GameController.control.currentLevel;
 				}
@@ -104,44 +109,45 @@ public class MainMenuController : MonoBehaviour {
 			}
 			//If left and not at beginning
 			else if((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && (currentSelection > 1)){
-				change.color = Color.white;
+				change.color = faded;
 				currentSelection--;
 			}
 			//If right and not at end
 			else if((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && (currentSelection < GameController.control.currentLevel) && (currentSelection != 0)){
-				change.color = Color.white;
+				change.color = faded;
 				currentSelection++;
 			}
 			//If up and more than 5 from beginning
 			else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){
 				if(currentSelection > 5){
-					change.color = Color.white;
+					change.color = faded;
 					currentSelection -= 5;
 				}
 				else if(currentSelection == 0){
-					change.color = Color.white;
+					change.color = faded;
 					currentSelection = GameController.control.currentLevel;
 				}
 			}
 			//If down and more than 5 from the end
 			else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)){
 				if(currentSelection < (GameController.control.currentLevel - 4)){
-					change.color = Color.white;
+					change.color = faded;
 					currentSelection += 5;
 				}
 				else{
-					change.color = Color.white;
+					change.color = faded;
 					currentSelection = 0;
 				}
 			}
 			else if(Input.GetKeyDown(KeyCode.Escape)){
-				change.color = Color.white;
+				change.color = faded;
 				levelScreen.SetActive(false);
 				currentSelection = GameController.control.currentLevel;
 			}
 		}
 		//else if exit screen
 		else{
+
 			if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)){
 				bool temp = oppositeLeave;
 				oppositeLeave = selectLeave;
@@ -154,15 +160,15 @@ public class MainMenuController : MonoBehaviour {
 
 			//If on Leave button
 			if(selectLeave){
-				leaveButton.color = Color.red;
-				backButton.color = Color.white;
+				leaveButton.color = original;
+				backButton.color = faded;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitScript.QuitGame();
 				}
 			}
 			else{
-				leaveButton.color = Color.white;
-				backButton.color = Color.red;
+				leaveButton.color = faded;
+				backButton.color = original;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitCheck.SetActive(false);
 				}

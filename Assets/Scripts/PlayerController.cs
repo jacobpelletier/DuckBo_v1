@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour {
         {
             anim.SetBool("HoldShoot", true);
             //if cooldown over, shoot bullet
-            if (shoot)
+            if (shoot && (Time.timeScale > 0))
             {
                 StopCoroutine("SittingStill");
                 anim.SetBool("SitStill", false);

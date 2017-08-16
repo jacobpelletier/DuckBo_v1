@@ -16,8 +16,16 @@ public class LevelController : MonoBehaviour {
 	public Image resumeButton;
 	public Image leaveButton;
 
+	Color faded;
+	Color original;
+
 	void Awake(){
 		activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+
+		//COLORING
+		faded = new Color32(223,117,103,255);
+		original = faded;
+		faded.a = 0.5f;
 	}
 
 	// Update is called once per frame
@@ -51,12 +59,12 @@ public class LevelController : MonoBehaviour {
 				resume = temp;
 
 				if(resume){
-					resumeButton.color = Color.red;
-					leaveButton.color = Color.white;
+					resumeButton.color = original;
+					leaveButton.color = faded;
 				}
 				else{
-					resumeButton.color = Color.white;
-					leaveButton.color = Color.red;
+					resumeButton.color = faded;
+					leaveButton.color = original;
 				}
 			}
 
