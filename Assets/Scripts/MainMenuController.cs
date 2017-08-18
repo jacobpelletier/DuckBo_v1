@@ -38,8 +38,14 @@ public class MainMenuController : MonoBehaviour {
 	private Color mainFaded;
 	private Color mainOriginal;
 
+	//Sounds
+	private AudioSource audioSource;
+	public AudioClip select;
+	public AudioClip click;
+
 	// Use this for initialization
 	void Start () {
+		audioSource = GetComponent<AudioSource>();
 		playScript = play.GetComponent<PlayButton>();
 		exitScript = exit.GetComponent<ExitButton>();
 
@@ -64,10 +70,12 @@ public class MainMenuController : MonoBehaviour {
 				bool temp = opposite;
 				opposite = selectPlay;
 				selectPlay = temp;
+				audioSource.PlayOneShot(select, 0.7f);
 			}
 
 			if(Input.GetKeyDown(KeyCode.Escape)){
 				exitScript.Escaped();
+				audioSource.PlayOneShot(click, 0.7f);
 			}
 
 			if(selectPlay){
@@ -75,6 +83,7 @@ public class MainMenuController : MonoBehaviour {
 				exitButton.color = mainFaded;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					playScript.StartGames();
+					audioSource.PlayOneShot(click, 0.7f);
 				}
 			}
 			else{
@@ -82,6 +91,7 @@ public class MainMenuController : MonoBehaviour {
 				exitButton.color = mainOriginal;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitScript.Escaped();
+					audioSource.PlayOneShot(click, 0.7f);
 				}
 			}
 		}
@@ -99,11 +109,13 @@ public class MainMenuController : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Return)){
 				if(currentSelection != 0){
 					selectScript.LoadLevel();
+					audioSource.PlayOneShot(click, 0.7f);
 				}
 				else{
 					change.color = faded;
 					levelScreen.SetActive(false);
 					currentSelection = GameController.control.currentLevel;
+					audioSource.PlayOneShot(click, 0.7f);
 				}
 
 			}
@@ -111,21 +123,25 @@ public class MainMenuController : MonoBehaviour {
 			else if((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && (currentSelection > 1)){
 				change.color = faded;
 				currentSelection--;
+				audioSource.PlayOneShot(select, 0.7f);
 			}
 			//If right and not at end
 			else if((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && (currentSelection < GameController.control.currentLevel) && (currentSelection != 0)){
 				change.color = faded;
 				currentSelection++;
+				audioSource.PlayOneShot(select, 0.7f);
 			}
 			//If up and more than 5 from beginning
 			else if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){
 				if(currentSelection > 5){
 					change.color = faded;
 					currentSelection -= 5;
+					audioSource.PlayOneShot(select, 0.7f);
 				}
 				else if(currentSelection == 0){
 					change.color = faded;
 					currentSelection = GameController.control.currentLevel;
+					audioSource.PlayOneShot(select, 0.7f);
 				}
 			}
 			//If down and more than 5 from the end
@@ -133,16 +149,19 @@ public class MainMenuController : MonoBehaviour {
 				if(currentSelection < (GameController.control.currentLevel - 4)){
 					change.color = faded;
 					currentSelection += 5;
+					audioSource.PlayOneShot(select, 0.7f);
 				}
 				else{
 					change.color = faded;
 					currentSelection = 0;
+					audioSource.PlayOneShot(select, 0.7f);
 				}
 			}
 			else if(Input.GetKeyDown(KeyCode.Escape)){
 				change.color = faded;
 				levelScreen.SetActive(false);
 				currentSelection = GameController.control.currentLevel;
+				audioSource.PlayOneShot(click, 0.7f);
 			}
 		}
 		//else if exit screen
@@ -152,10 +171,12 @@ public class MainMenuController : MonoBehaviour {
 				bool temp = oppositeLeave;
 				oppositeLeave = selectLeave;
 				selectLeave = temp;
+				audioSource.PlayOneShot(select, 0.7f);
 			}
 
 			if(Input.GetKeyDown(KeyCode.Escape)){
 				exitCheck.SetActive(false);
+				audioSource.PlayOneShot(click, 0.7f);
 			}
 
 			//If on Leave button
@@ -164,6 +185,7 @@ public class MainMenuController : MonoBehaviour {
 				backButton.color = faded;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitScript.QuitGame();
+					audioSource.PlayOneShot(click, 0.7f);
 				}
 			}
 			else{
@@ -171,6 +193,7 @@ public class MainMenuController : MonoBehaviour {
 				backButton.color = original;
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitCheck.SetActive(false);
+					audioSource.PlayOneShot(click, 0.7f);
 				}
 			}
 		}

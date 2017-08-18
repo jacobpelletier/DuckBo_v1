@@ -21,15 +21,25 @@ public class Hunter1Controller : MonoBehaviour {
 	private Collider2D col;
 	private Vector2 size;
 
-    //Shooting variables
-    private bool shootCooldown = false;
-    public GameObject gunTip;
-    public GameObject bulletLeft;
-    public GameObject bulletRight;
-    public GameObject muzzleFlash;
+  //Shooting variables
+  private bool shootCooldown = false;
+  public GameObject gunTip;
+  public GameObject bulletLeft;
+  public GameObject bulletRight;
+  public GameObject muzzleFlash;
 
-    //Animator
-    private Animator anim;
+  //Animator
+  private Animator anim;
+
+	//Sounds
+	private Renderer rend;
+	private bool dead = false;
+	private AudioSource audioSource;
+	public AudioClip Hit1, Hit2, Hit3;
+	public AudioClip shot;
+
+	//Flip at start
+	public bool flip = false;
 
 	// Use this for initialization
 	void Start () {
@@ -39,12 +49,18 @@ public class Hunter1Controller : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		col = GetComponent<Collider2D>();
 		anim = GetComponent<Animator>();
+		rend = GetComponent<Renderer>();
+		audioSource = GetComponent<AudioSource>();
 
 		//initially go right
 		direction = new Vector3(1,0,0);
 
 		//grab collider size
 		size = col.bounds.size;
+
+		if(flip){
+			FlipThis();
+		}
 	}
 
 	//Default update
@@ -62,15 +78,20 @@ public class Hunter1Controller : MonoBehaviour {
 	//Check if out of life
 	void LifeCheck(){
 		if(life <= 0){
-			Destroy(gameObject);
+ 			rend.enabled = false;
+			col.enabled = false;
+			dead = true;
+ 			Destroy(gameObject, Hit1.length);
 		}
 	}
 
 	//Control left and right and shoot
 	void HunterMovement(){
 
+		float velY = Mathf.Abs(rb.velocity.y);
+
 		//If hit a wall, turn around
-		if(WallCheck() == true || EdgeCheck() == true){
+		if(WallCheck() == true || (EdgeCheck() == true && velY < 1)){
 			FlipThis();
 		}
 
@@ -195,6 +216,8 @@ public class Hunter1Controller : MonoBehaviour {
 
 	//public function to apply damage to Hunter
 	public void Hit(int damage){
+		AudioClip selectSound = (AudioClip)this.GetType().GetField("Hit" + Random.Range(1,3)).GetValue(this);
+		audioSource.PlayOneShot(selectSound, 0.7f);
 		//if hit subtract damage
 		life -= damage;
 
@@ -218,6 +241,11 @@ public class Hunter1Controller : MonoBehaviour {
 		//Hunter shooting
     void Shoot()
     {
+				if(dead){
+					return;
+				}
+
+				audioSource.PlayOneShot(shot, 0.7f);
         //spawn bullet and muzzleflash based on direction
         if (Mathf.Sign(transform.localScale.x) == 1)
         {

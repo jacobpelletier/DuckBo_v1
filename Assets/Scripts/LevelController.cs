@@ -19,7 +19,13 @@ public class LevelController : MonoBehaviour {
 	Color faded;
 	Color original;
 
+	//Sounds
+	private AudioSource audioSource;
+	public AudioClip pauseSelect;
+	public AudioClip pauseClick;
+
 	void Awake(){
+		audioSource = GetComponent<AudioSource>();
 		activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
 
 		//COLORING
@@ -31,6 +37,8 @@ public class LevelController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape)){
+
+			audioSource.PlayOneShot(pauseClick, 0.7f);
 
 			//should pause
 			if(!pause){
@@ -57,6 +65,7 @@ public class LevelController : MonoBehaviour {
 				bool temp = leave;
 				leave = resume;
 				resume = temp;
+				audioSource.PlayOneShot(pauseSelect, 0.7f);
 
 				if(resume){
 					resumeButton.color = original;
@@ -70,6 +79,8 @@ public class LevelController : MonoBehaviour {
 
 			//If user inputs enter/return...
 			if(Input.GetKeyDown(KeyCode.Return)){
+
+				audioSource.PlayOneShot(pauseClick, 0.7f);
 				//... and current selection is resume ...
 				if(resume){
 					//... set pause menu active to false, resume game
@@ -88,6 +99,7 @@ public class LevelController : MonoBehaviour {
 					StartCoroutine("Exit");
 				}
 			}
+
 		}
 	}
 

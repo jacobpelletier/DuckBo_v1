@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class CameraController : MonoBehaviour {
@@ -91,7 +92,7 @@ public class CameraController : MonoBehaviour {
 
     //Reloads level
     if (GUI.Button(new Rect(10, 70, 100, 30), "ResetLevel"))
-      Application.LoadLevel(Application.loadedLevel);
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     //Deletes old save, and sets values to default
     if (GUI.Button(new Rect(10, 100, 100, 30), "DeleteSave")){

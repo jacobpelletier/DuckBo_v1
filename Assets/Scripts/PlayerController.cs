@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Goes on player in levels
 public class PlayerController : MonoBehaviour {
@@ -371,7 +372,7 @@ public class PlayerController : MonoBehaviour {
     public void Death()
     {
         audioSource.PlayOneShot(death, 0.7f);
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //Check for grounded with raycasts
