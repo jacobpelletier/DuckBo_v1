@@ -387,9 +387,23 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D grounded2 = Physics2D.Raycast(brCorner, -Vector2.up, 0.05f);
 
         //If grounded by any raycast, return true
-        if (grounded1.collider != null || grounded2.collider != null)
+        if (grounded1.collider != null)
         {
+          if(grounded1.collider.tag == "Map" || grounded1.collider.tag == "OneWay"){
             return true;
+          }
+          else{
+            return false;
+          }
+        }
+        else if (grounded2.collider != null)
+        {
+          if(grounded2.collider.tag == "Map" || grounded2.collider.tag == "OneWay"){
+            return true;
+          }
+          else{
+            return false;
+          }
         }
         else
         {
