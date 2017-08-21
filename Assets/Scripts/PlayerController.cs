@@ -51,6 +51,11 @@ public class PlayerController : MonoBehaviour {
     //Camera active
     CameraController activeCamera;
 
+    //Moving ground particles
+    public GameObject groundParticles;
+    private ParticleSystem gpSettings;
+    private bool isGrounded;
+
     // Starts before Start function
     void Awake()
     {
@@ -59,6 +64,7 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
+        gpSettings = groundParticles.GetComponent<ParticleSystem>();
         activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
     }
 
@@ -94,6 +100,7 @@ public class PlayerController : MonoBehaviour {
         //Run player shots and jumping - Arrow keys and W
         PlayerShooting();
         PlayerJumpSpace();
+        PlayerParticles();
 
         //fall death
         if (transform.position.y < -10f)
@@ -245,7 +252,7 @@ public class PlayerController : MonoBehaviour {
         //if jump pressed && !still pressed && grounded = jump
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
-            bool isGrounded = GroundCheck();
+            isGrounded = GroundCheck();
 
             //if jump is pressed and ground...
             if (isGrounded)
@@ -271,6 +278,21 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("Fall", true);
         }
 
+    }
+
+    void PlayerParticles(){
+      isGrounded = GroundCheck();
+
+      if(isGrounded && (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))){
+        if(!gpSettings.isPlaying){
+          gpSettings.Play(true);
+        }
+      }
+      else{
+        if(gpSettings.isPlaying){
+          gpSettings.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+      }
     }
 
     void PlayerShooting()
@@ -389,7 +411,7 @@ public class PlayerController : MonoBehaviour {
         //If grounded by any raycast, return true
         if (grounded1.collider != null)
         {
-          if(grounded1.collider.tag == "Map" || grounded1.collider.tag == "OneWay"){
+          if(grounded1.collider.tag == "Map" || grounded1.collider.tag == "OneWay" || grounded1.collider.tag == "EnemyPlatform"){
             return true;
           }
           else{
@@ -398,7 +420,7 @@ public class PlayerController : MonoBehaviour {
         }
         else if (grounded2.collider != null)
         {
-          if(grounded2.collider.tag == "Map" || grounded2.collider.tag == "OneWay"){
+          if(grounded2.collider.tag == "Map" || grounded2.collider.tag == "OneWay" || grounded2.collider.tag == "EnemyPlatform"){
             return true;
           }
           else{

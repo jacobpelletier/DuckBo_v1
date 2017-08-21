@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5273032f8504f4e5cbe67f561c525be3
-timeCreated: 1503274203
+timeCreated: 1503346919
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -108,7 +108,7 @@ TextureImporter:
         serializedVersion: 2
         x: 30
         y: 13
-        width: 23
+        width: 43
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,20 +121,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 1
-        width: 25
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Platforms_3
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 1
-        width: 25
+        width: 75
         height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
