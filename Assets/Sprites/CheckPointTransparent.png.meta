@@ -1,9 +1,26 @@
 fileFormatVersion: 2
 guid: af922b2d933cb4769869747fe1bf4bcc
-timeCreated: 1503233489
+timeCreated: 1503273550
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: CheckPointTransparent_0
+    21300002: CheckPointTransparent_1
+    21300004: CheckPointTransparent_2
+    21300006: CheckPointTransparent_3
+    21300008: CheckPointTransparent_4
+    21300010: CheckPointTransparent_5
+    21300012: CheckPointTransparent_6
+    21300014: CheckPointTransparent_7
+    21300016: CheckPointTransparent_8
+    21300018: CheckPointTransparent_9
+    21300020: CheckPointTransparent_10
+    21300022: CheckPointTransparent_11
+    21300024: CheckPointTransparent_12
+    21300026: CheckPointTransparent_13
+    21300028: CheckPointTransparent_14
+    21300030: CheckPointTransparent_15
+    21300032: CheckPointTransparent_16
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -27,14 +44,14 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,14 +70,259 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CheckPointTransparent_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 22
+        width: 10
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 22
+        width: 10
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 22
+        width: 10
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 22
+        width: 10
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 22
+        width: 10
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_5
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 22
+        width: 10
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_6
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 22
+        width: 10
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_7
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 22
+        width: 10
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 10
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_9
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 2
+        width: 10
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 2
+        width: 10
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_11
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 2
+        width: 14
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_12
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 2
+        width: 10
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_13
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 2
+        width: 14
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_14
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 2
+        width: 10
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_15
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 2
+        width: 10
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CheckPointTransparent_16
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 2
+        width: 10
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
