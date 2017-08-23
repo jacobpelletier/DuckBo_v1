@@ -17,8 +17,10 @@ public class BulletController : MonoBehaviour {
     //Bullet RigidBody
     private Rigidbody2D rb;
 
-    //BloodSplatter
+    //Splatters
     public GameObject blood;
+    public GameObject spark;
+
 
 	// Use this for initialization
 	void Start () {
@@ -91,9 +93,23 @@ public class BulletController : MonoBehaviour {
 
         //if it collides with hunter 1, get script and run hit function and show bloodSplat
         if(collider.tag == "Hunter" && !enemyBullet){
-          Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
-          Instantiate(blood, transform.position, transform.rotation);
-          instance.Hit(damage);
+          if(collider.name.Contains("Hunter1")){
+            Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
+            Instantiate(blood, transform.position, transform.rotation);
+            instance.Hit(damage);
+          }
+          else if (collider.name.Contains("MuscleMan")){
+            MuscleManControl instance = collider.gameObject.GetComponent<MuscleManControl>();
+            if(instance.CheckVuln()){
+              Instantiate(blood, transform.position, transform.rotation);
+            }
+            else{
+              Instantiate(spark, transform.position, transform.rotation);
+            }
+
+            instance.Hit(damage);
+          }
+
           Destroy(gameObject);
         }
     }
