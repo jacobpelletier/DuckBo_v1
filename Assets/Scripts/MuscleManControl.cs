@@ -25,10 +25,17 @@ public class MuscleManControl : MonoBehaviour {
 	//Audio Stuffs
 	private AudioSource audioSource;
 	public AudioClip Hit1, Hit2, Hit3;
+	public AudioClip jump;
 
 	//Grab active playerScript
 	private GameObject player;
 	private PlayerController playerScript;
+
+	//WHOOOSH
+	public GameObject whooshLeft;
+	public GameObject whooshRight;
+	public GameObject spawnLeft;
+	public GameObject spawnRight;
 
 	//Calling before start
 	void Awake(){
@@ -75,10 +82,25 @@ public class MuscleManControl : MonoBehaviour {
 	void MuscleJump(){
 
 		if(jumpTime){
+			PlayerCheck();
 			jumpTime = false;
 			vuln = false;
 			anim.SetBool("Jump",true);
 			StartCoroutine("JumpCooldown");
+		}
+	}
+
+	void PlayerCheck(){
+		float position = player.transform.position.x - transform.position.x;
+		if(transform.localScale.x < 0 && position > 0){
+			Vector3 temp = transform.localScale;
+			temp.x *= -1;
+			transform.localScale = temp;
+		}
+		else if(transform.localScale.x > 0 && position < 0){
+			Vector3 temp = transform.localScale;
+			temp.x *= -1;
+			transform.localScale = temp;
 		}
 	}
 
@@ -100,10 +122,17 @@ public class MuscleManControl : MonoBehaviour {
 
 	IEnumerator JumpCooldown(){
 		yield return new WaitForSeconds(0.275f);
+		audioSource.PlayOneShot(jump, 0.7f);
 		hunterBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
 		anim.SetBool("Jump",false);
-		yield return new WaitForSeconds(1f);
+
+		yield return new WaitForSeconds(0.8f);
+		Instantiate(whooshLeft, spawnLeft.transform.position, transform.rotation);
+		Instantiate(whooshRight, spawnRight.transform.position, transform.rotation);
+
+		yield return new WaitForSeconds(0.2f);
 		vuln = true;
+
 		yield return new WaitForSeconds(1.2f);
 		jumpTime = true;
 	}
