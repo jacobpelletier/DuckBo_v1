@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d3f578393bc764dd7b861d890bd12a24
-timeCreated: 1503609063
+timeCreated: 1503609704
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: LogoReverseDuckHunter_1
     21300004: LogoReverseDuckHunter_2
     21300006: LogoReverseDuckHunter_3
+    21300008: LogoReverseDuckHunter_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -98,7 +99,7 @@ TextureImporter:
         width: 153
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -111,7 +112,7 @@ TextureImporter:
         width: 153
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -124,7 +125,7 @@ TextureImporter:
         width: 153
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -134,6 +135,19 @@ TextureImporter:
         serializedVersion: 2
         x: 525
         y: 399
+        width: 153
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: LogoReverseDuckHunter_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 290
         width: 153
         height: 68
       alignment: 0
