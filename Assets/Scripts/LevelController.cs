@@ -11,8 +11,10 @@ public class LevelController : MonoBehaviour {
 	private bool pause = false;
 	private bool resume = true;
 	private bool leave = false;
+	public bool sign = false;
 
 	public GameObject pauseMenu;
+	public GameObject signScreen;
 	public Image resumeButton;
 	public Image leaveButton;
 
@@ -40,21 +42,28 @@ public class LevelController : MonoBehaviour {
 
 			audioSource.PlayOneShot(pauseClick, 0.7f);
 
-			//should pause
-			if(!pause){
-				pauseMenu.SetActive(true); 								// shows pause menu
-				Time.timeScale = 0f;											// pauses time
-				pause = true;															// sets bool for pause to true
-				Cursor.lockState = CursorLockMode.None;		// sets cursor to unlocked
-				Cursor.visible = true;										// sets cursor to visible
+			if(!sign){
+				//should pause
+				if(!pause){
+					pauseMenu.SetActive(true); 								// shows pause menu
+					Time.timeScale = 0f;											// pauses time
+					pause = true;															// sets bool for pause to true
+					Cursor.lockState = CursorLockMode.None;		// sets cursor to unlocked
+					Cursor.visible = true;										// sets cursor to visible
+				}
+				else{
+					pauseMenu.SetActive(false);								//Does the opposite of the above ^
+					Time.timeScale = 1f;
+					pause = false;
+					Cursor.lockState = CursorLockMode.Locked;
+					Cursor.visible = false;
+				}
 			}
 			else{
-				pauseMenu.SetActive(false);								//Does the opposite of the above ^
-				Time.timeScale = 1f;
-				pause = false;
-				Cursor.lockState = CursorLockMode.Locked;
-				Cursor.visible = false;
+				signScreen.SetActive(false);
+				sign = false;
 			}
+
 		}
 
 		//If pause menu is active
@@ -101,6 +110,11 @@ public class LevelController : MonoBehaviour {
 			}
 
 		}
+	}
+
+	public void setSign(GameObject chosenSign){
+		sign = true;
+		signScreen = chosenSign;
 	}
 
 	//Delay between transferring to main menu, waiting for fadeout

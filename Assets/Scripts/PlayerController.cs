@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour {
     private ParticleSystem gpSettings;
     private bool isGrounded;
 
+    //Check if sign is active variables
+    public GameObject levelManager;
+    private LevelController levelControl;
+
     // Starts before Start function
     void Awake()
     {
@@ -66,6 +70,8 @@ public class PlayerController : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         gpSettings = groundParticles.GetComponent<ParticleSystem>();
         activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        levelManager = GameObject.Find("LevelManager");
+        levelControl = levelManager.GetComponent<LevelController>();
     }
 
     // Use this for initialization
@@ -97,10 +103,13 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("Grounded", false);
         }
 
-        //Run player shots and jumping - Arrow keys and W
-        PlayerShooting();
-        PlayerJumpSpace();
-        PlayerParticles();
+        //Run player shots and jumping - Arrow keys and W || as long as sign isn't active
+        if(levelControl.sign == false){
+          PlayerShooting();
+          PlayerJumpSpace();
+          PlayerParticles();
+        }
+
 
         //fall death
         if (transform.position.y < -10f)
@@ -112,8 +121,11 @@ public class PlayerController : MonoBehaviour {
     //physics update
     void FixedUpdate()
     {
-        //A and D keys
-        PlayerMoveKeyboard();
+        //A and D keys || and sign isn't active
+        if(levelControl.sign == false){
+          PlayerMoveKeyboard();
+        }
+
     }
 
     //Gets player movement input

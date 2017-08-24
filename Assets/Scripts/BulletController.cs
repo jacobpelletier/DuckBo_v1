@@ -83,7 +83,7 @@ public class BulletController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         //if it collides with something that's not the player or a collectable, destroy
-        if(collider.tag != "Player" && collider.tag != "Collectable" && collider.tag != "Checkpoint" && collider.tag != "OneWay" && collider.tag != "EnemyPlatform")
+        if(collider.tag != "Player" && collider.tag != "Collectable" && collider.tag != "Checkpoint" && collider.tag != "OneWay" && collider.tag != "EnemyPlatform" && collider.tag != "Ignore" )
         {
             Destroy(gameObject);
         }

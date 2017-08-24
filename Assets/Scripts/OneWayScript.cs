@@ -18,6 +18,7 @@ public class OneWayScript : MonoBehaviour {
 		}
 	}
 
+	//Reenable the platform after a timeframe
 	IEnumerator ReActivate(){
 		yield return new WaitForSeconds(0.5f);
 		platform.enabled = true;

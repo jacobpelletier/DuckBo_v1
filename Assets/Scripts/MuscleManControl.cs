@@ -122,6 +122,7 @@ public class MuscleManControl : MonoBehaviour {
 
 	//Muscleman is hit
 	public void Hit(int damage){
+		//and if they were vulnerable
 		if (CheckVuln()){
 			AudioClip selectSound = (AudioClip)this.GetType().GetField("Hit" + Random.Range(1,3)).GetValue(this);
 			audioSource.PlayOneShot(selectSound, 0.7f);
