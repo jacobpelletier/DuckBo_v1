@@ -73,14 +73,18 @@ public class MainMenuController : MonoBehaviour {
 				audioSource.PlayOneShot(select, 0.7f);
 			}
 
+			//...and escape is pressed, go to escape menu
 			if(Input.GetKeyDown(KeyCode.Escape)){
 				exitScript.Escaped();
 				audioSource.PlayOneShot(click, 0.7f);
 			}
 
+			//...and a button is chosen...
 			if(selectPlay){
 				playButton.color = mainOriginal;
 				exitButton.color = mainFaded;
+
+				//...and enter is pressed, start game
 				if(Input.GetKeyDown(KeyCode.Return)){
 					playScript.StartGames();
 					audioSource.PlayOneShot(click, 0.7f);
@@ -89,6 +93,8 @@ public class MainMenuController : MonoBehaviour {
 			else{
 				playButton.color = mainFaded;
 				exitButton.color = mainOriginal;
+
+				//...and enter is pressed, go to escape menu
 				if(Input.GetKeyDown(KeyCode.Return)){
 					exitScript.Escaped();
 					audioSource.PlayOneShot(click, 0.7f);
@@ -167,6 +173,7 @@ public class MainMenuController : MonoBehaviour {
 		//else if exit screen
 		else{
 
+			//and directional keys "left" or "right" is pressed, change selection
 			if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)){
 				bool temp = oppositeLeave;
 				oppositeLeave = selectLeave;
@@ -174,6 +181,7 @@ public class MainMenuController : MonoBehaviour {
 				audioSource.PlayOneShot(select, 0.7f);
 			}
 
+			//If escape, quit escape menu
 			if(Input.GetKeyDown(KeyCode.Escape)){
 				exitCheck.SetActive(false);
 				audioSource.PlayOneShot(click, 0.7f);

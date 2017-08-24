@@ -7,6 +7,7 @@ public class TrapScript : MonoBehaviour {
 
     public PlayerController playerScript;
 
+    //Initialize  
     void Start(){
       playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }

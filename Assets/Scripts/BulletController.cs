@@ -91,13 +91,16 @@ public class BulletController : MonoBehaviour {
             playerScript.Death();
         }
 
-        //if it collides with hunter 1, get script and run hit function and show bloodSplat
+        //if it collides with a hunter, get script and run hit function and show particles
         if(collider.tag == "Hunter" && !enemyBullet){
+
+          //if Hunter1 is hit, spawn blood splat and call the objects hit funciton
           if(collider.name.Contains("Hunter1")){
             Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
             Instantiate(blood, transform.position, transform.rotation);
             instance.Hit(damage);
           }
+          //if muscleman is hit, first check to see if he is vulnerable, and spawn particles accordingly
           else if (collider.name.Contains("MuscleMan")){
             MuscleManControl instance = collider.gameObject.GetComponent<MuscleManControl>();
             if(instance.CheckVuln()){
@@ -110,6 +113,7 @@ public class BulletController : MonoBehaviour {
             instance.Hit(damage);
           }
 
+          //Destroy bullet
           Destroy(gameObject);
         }
     }

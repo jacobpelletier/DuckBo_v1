@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class WhooshController : MonoBehaviour {
 
+	//Adjustable variables
 	public float speed = 1f;
 	public float lifetime = 0.7f;
 	public bool flipped = false;
 
+	//Components
 	private Rigidbody2D rb;
 	private PlayerController playerScript;
 
@@ -23,6 +25,7 @@ public class WhooshController : MonoBehaviour {
 	void FixedUpdate () {
 		Vector3 temp;
 
+		//Choosing direction of whoosh based off of +/- scale
 		if(!flipped){
 			temp = new Vector3(-1f, 0f, 0f);
 		}
@@ -30,16 +33,21 @@ public class WhooshController : MonoBehaviour {
 			temp = new Vector3(1f, 0f, 0f);
 		}
 
+		//Multiply direction * speed
 		temp *= speed;
 
+		//Add that force
 		rb.AddForce(temp);
 	}
 
+	//If something enters the trigger collider
 	void OnTriggerEnter2D(Collider2D collider){
+		//if it's a wall
 		if(collider.tag != "Player" && collider.tag != "Collectable" && collider.tag != "Checkpoint" && collider.tag != "OneWay" && collider.tag != "EnemyPlatform" && collider.tag != "Hunter" && collider.tag != "Bullet"){
 			//instantiate dust particles here
 			Destroy(gameObject);
 		}
+		//if it's the player
 		else if(collider.tag == "Player"){
 			playerScript.Death();
 			//instantiate dust particles here
@@ -47,6 +55,7 @@ public class WhooshController : MonoBehaviour {
 		}
 	}
 
+	//length of life for the whoosh
 	IEnumerator Lifetime(){
 		yield return new WaitForSeconds(lifetime);
 		Destroy(gameObject);

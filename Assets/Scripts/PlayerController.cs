@@ -280,21 +280,28 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    //Dirt kickup code
     void PlayerParticles(){
       isGrounded = GroundCheck();
 
+      //If player is grounded and a direction key is being pressed...
       if(isGrounded && (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D)))){
+        //And it's not already playing something...
         if(!gpSettings.isPlaying){
+          //Set animation to Play
           gpSettings.Play(true);
         }
       }
       else{
+        //if not grounded and/or no key is being pressed...
         if(gpSettings.isPlaying){
+          //Stop animation of particles
           gpSettings.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
       }
     }
 
+    //Code for player shots
     void PlayerShooting()
     {
         //if you press an arrow key

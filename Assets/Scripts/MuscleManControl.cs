@@ -64,6 +64,7 @@ public class MuscleManControl : MonoBehaviour {
 		MuscleJump();
 	}
 
+	//Check muscleman health
 	void LifeCheck(){
 		if(life <= 0){
 			rend.enabled = false;
@@ -72,8 +73,10 @@ public class MuscleManControl : MonoBehaviour {
 		}
 	}
 
+	//If muscleman hits player
 	void OnCollisionEnter2D(Collision2D coll){
 		if(coll.gameObject.tag == "Player"){
+			//kill player
 			playerScript.Death();
 		}
 	}
@@ -81,8 +84,12 @@ public class MuscleManControl : MonoBehaviour {
 	//Code for jumping
 	void MuscleJump(){
 
+		//if jumping is not on cooldown
 		if(jumpTime){
+			//Check player position
 			PlayerCheck();
+
+			//Set jump cooldown again in the coroutine
 			jumpTime = false;
 			vuln = false;
 			anim.SetBool("Jump",true);
@@ -90,8 +97,12 @@ public class MuscleManControl : MonoBehaviour {
 		}
 	}
 
+	//Flipper, regarding player position
 	void PlayerCheck(){
+		//Get player position relative to object
 		float position = player.transform.position.x - transform.position.x;
+
+		//If player is on the opposite side of the direction muscleman is facing, flip it
 		if(transform.localScale.x < 0 && position > 0){
 			Vector3 temp = transform.localScale;
 			temp.x *= -1;
@@ -104,10 +115,12 @@ public class MuscleManControl : MonoBehaviour {
 		}
 	}
 
+	//Check if muscleman is vulnerable
 	public bool CheckVuln(){
 		return vuln;
 	}
 
+	//Muscleman is hit
 	public void Hit(int damage){
 		if (CheckVuln()){
 			AudioClip selectSound = (AudioClip)this.GetType().GetField("Hit" + Random.Range(1,3)).GetValue(this);
@@ -120,6 +133,7 @@ public class MuscleManControl : MonoBehaviour {
 		}
 	}
 
+	//Corouting for jump cooldown, also adds forces for jumping
 	IEnumerator JumpCooldown(){
 		yield return new WaitForSeconds(0.275f);
 		audioSource.PlayOneShot(jump, 0.7f);
@@ -137,6 +151,7 @@ public class MuscleManControl : MonoBehaviour {
 		jumpTime = true;
 	}
 
+	//Hit animation
 	IEnumerator HitTime(){
 		yield return new WaitForSeconds(0.3f);
 		anim.SetBool("Hit",false);
