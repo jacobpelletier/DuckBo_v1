@@ -23,10 +23,12 @@ public class GrassTrigger : MonoBehaviour {
 	}
 
 	//When something enters trigger area
-	void OnTriggerEnter2D(){
-		audioSource.PlayOneShot(bushSound, 0.7f);
-		grassParticles.Play(true);
-		StartCoroutine("LifeTime");
+	void OnTriggerEnter2D(Collider2D collider){
+		if(collider.tag != "Bullet"){
+			audioSource.PlayOneShot(bushSound, 0.7f);
+			grassParticles.Play(true);
+			StartCoroutine("LifeTime");
+		}
 	}
 
 	//Lifetime of particles

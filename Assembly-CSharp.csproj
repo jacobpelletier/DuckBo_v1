@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\CollectableScript.cs" />
      <Compile Include="Assets\Scripts\EmptyLevel.cs" />
      <Compile Include="Assets\Scripts\ExitButton.cs" />
+     <Compile Include="Assets\Scripts\FlingBodyParts.cs" />
      <Compile Include="Assets\Scripts\FloatingMovement.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GrassTrigger.cs" />

@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour {
     //grab size of collider and audio source
     private Vector2 size;
     private Collider2D col;
+    private Renderer rend;
     private AudioSource audioSource;
 
     //Camera active
@@ -60,6 +61,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject levelManager;
     private LevelController levelControl;
 
+    //Death
+    public GameObject deathDuck;
+    public GameObject deathDuckFlipped;
+    private bool dead = false;
+
     // Starts before Start function
     void Awake()
     {
@@ -67,6 +73,7 @@ public class PlayerController : MonoBehaviour {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
+        rend = GetComponent<Renderer>();
         audioSource = GetComponent<AudioSource>();
         gpSettings = groundParticles.GetComponent<ParticleSystem>();
         activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
@@ -104,7 +111,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Run player shots and jumping - Arrow keys and W || as long as sign isn't active
-        if(levelControl.sign == false){
+        if(levelControl.sign == false && !dead){
           PlayerShooting();
           PlayerJumpSpace();
           PlayerParticles();
@@ -122,7 +129,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate()
     {
         //A and D keys || and sign isn't active
-        if(levelControl.sign == false){
+        if(levelControl.sign == false && !dead){
           PlayerMoveKeyboard();
         }
 
@@ -413,7 +420,18 @@ public class PlayerController : MonoBehaviour {
     public void Death()
     {
         audioSource.PlayOneShot(death, 0.7f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        rend.enabled = false;
+  			col.enabled = false;
+        dead = true;
+        if(transform.localScale.x > 0){
+          Instantiate(deathDuck, transform.position, transform.rotation);
+        }
+        else{
+          Instantiate(deathDuckFlipped, transform.position, transform.rotation);
+        }
+
+        StartCoroutine("PauseBeforeDeath");
     }
 
     //Check for grounded with raycasts
@@ -493,5 +511,10 @@ public class PlayerController : MonoBehaviour {
 
       yield return new WaitForSeconds(4f);
       GameController.control.LevelWin();
+    }
+
+    IEnumerator PauseBeforeDeath(){
+      yield return new WaitForSeconds(3f);
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
