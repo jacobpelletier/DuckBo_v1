@@ -37,6 +37,11 @@ public class MuscleManControl : MonoBehaviour {
 	public GameObject spawnLeft;
 	public GameObject spawnRight;
 
+	//Death
+	public bool dead = false;
+	public GameObject deadMuscleLeft;
+	public GameObject deadMuscleRight;
+
 	//Calling before start
 	void Awake(){
 		player = GameObject.Find("Player");
@@ -70,6 +75,17 @@ public class MuscleManControl : MonoBehaviour {
 			rend.enabled = false;
 			col.enabled = false;
 			Destroy(gameObject, Hit1.length);
+
+			if(dead == false){
+				if(transform.localScale.x < 0){
+					Instantiate(deadMuscleLeft, transform.position, transform.rotation);
+				}
+				else{
+					Instantiate(deadMuscleRight, transform.position, transform.rotation);
+				}
+			}
+
+			dead = true;
 		}
 	}
 
