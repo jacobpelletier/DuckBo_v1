@@ -33,13 +33,17 @@ public class Hunter1Controller : MonoBehaviour {
 
 	//Sounds
 	private Renderer rend;
-	private bool dead = false;
 	private AudioSource audioSource;
 	public AudioClip Hit1, Hit2, Hit3;
 	public AudioClip shot;
 
 	//Flip at start
 	public bool flip = false;
+
+	//Death
+	private bool dead = false;
+	public GameObject deadHunter1;
+	public GameObject deadHunter2;
 
 	// Use this for initialization
 	void Start () {
@@ -80,8 +84,18 @@ public class Hunter1Controller : MonoBehaviour {
 		if(life <= 0){
  			rend.enabled = false;
 			col.enabled = false;
-			dead = true;
  			Destroy(gameObject, Hit1.length);
+
+			if(dead == false){
+				if(direction.x > 0){
+					Instantiate(deadHunter1, transform.position, transform.rotation);
+				}
+				else{
+					Instantiate(deadHunter2, transform.position, transform.rotation);
+				}
+			}
+
+			dead = true;
 		}
 	}
 

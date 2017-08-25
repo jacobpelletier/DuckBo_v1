@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 850
-  m_MinSize: {x: 681, y: 342}
-  m_MaxSize: {x: 12006, y: 8042}
+  m_MinSize: {x: 681, y: 321}
+  m_MaxSize: {x: 12006, y: 8021}
   vertical: 0
-  controlID: 71172
+  controlID: 76189
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,7 +156,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 9cf2caff2a45ccff7effceffe0ffceffce00cfffde00cfff1e01cfff2c1ad3ff602fd3fff671d3ff0c9cd3ffc237d4ff823ed4ff5a61d4ffb2a1d5ff7adde6ff94dee6ff24f7e6ff2e6ee7ff40f8e9ff4272efff7c8befff908cefff28d0f0ff9e37f3fff065f7ff0208f8ffdcfbfffff4ffffff00000000ec2700006ca100002ea30000081f01001c1f010074830100888301000afd01001efd010044260200dcc9020096cb0200aecb020036cc0200083a03001c3a0300
+    m_ExpandedIDs: 9cf2caff2a45ccff7effceffe0ffceffce00cfffde00cfff1e01cfff2c1ad3ff602fd3fff671d3ff0c9cd3ffc237d4ff823ed4ff5a61d4ffb2a1d5ff7adde6ff94dee6ff24f7e6ff2e6ee7ff40f8e9ff4272efff7c8befff908cefff28d0f0ff9e37f3fff065f7ff0208f8ffdcfbfffff4ffffff00000000ec2700006ca100002ea30000081f01001c1f010074830100888301000afd01001efd010044260200dcc9020096cb0200aecb020036cc0200083a03001c3a0300285c0300
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -199,10 +199,10 @@ MonoBehaviour:
     y: 0
     width: 755
     height: 850
-  m_MinSize: {x: 204, y: 342}
-  m_MaxSize: {x: 4004, y: 8042}
+  m_MinSize: {x: 204, y: 321}
+  m_MaxSize: {x: 4004, y: 8021}
   vertical: 1
-  controlID: 71104
+  controlID: 76224
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,10 +272,10 @@ MonoBehaviour:
     - {x: 379.99918, y: 216.00159}
     - {x: 379.99918, y: 216.00159}
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 85177ab45dce559428c57979e601962c,
+  m_AnimatorController: {fileID: 9100000, guid: 8388f7aebb667ce4985457b802ce4f97,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107835175820730196, guid: 85177ab45dce559428c57979e601962c,
+  - m_Target: {fileID: 1107530518172170540, guid: 8388f7aebb667ce4985457b802ce4f97,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -321,9 +321,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.8372927, y: -2.6549242, z: 0}
+    m_Target: {x: 1.7093661, y: -2.7685962, z: 0}
     speed: 2
-    m_Value: {x: -4.8372927, y: -2.6549242, z: 0}
+    m_Value: {x: 1.7093661, y: -2.7685962, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -350,9 +350,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.6590796
+    m_Target: 12.501125
     speed: 2
-    m_Value: 7.6590796
+    m_Value: 12.501125
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -381,8 +381,8 @@ MonoBehaviour:
     y: 539
     width: 755
     height: 311
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 10}
@@ -436,10 +436,10 @@ MonoBehaviour:
   m_LastProjectPath: /Users/jacobpelletier/Documents/DuckBo_v1/DuckBo_v1
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 99}
+    scrollPos: {x: 0, y: 175}
     m_SelectedIDs: dac40300
     m_LastClickedID: 247002
-    m_ExpandedIDs: 00000000ca240000aa250000fc250000522a0000542a000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000ca2400009e250000aa250000fc250000522a0000542a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -467,7 +467,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca240000aa250000fc250000522a0000542a000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000ca2400009e250000aa250000fc250000522a0000542a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

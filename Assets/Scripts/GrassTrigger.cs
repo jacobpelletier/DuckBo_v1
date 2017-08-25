@@ -13,7 +13,8 @@ public class GrassTrigger : MonoBehaviour {
 
 	//Audio capabilities
 	private AudioSource audioSource;
-	public AudioClip bushSound;
+	public AudioClip bushSound1;
+	public AudioClip bushSound2;
 
 	//Start before start
 	void Awake(){
@@ -25,7 +26,8 @@ public class GrassTrigger : MonoBehaviour {
 	//When something enters trigger area
 	void OnTriggerEnter2D(Collider2D collider){
 		if(collider.tag != "Bullet"){
-			audioSource.PlayOneShot(bushSound, 0.7f);
+			AudioClip selectSound = (AudioClip)this.GetType().GetField("bushSound" + Random.Range(1,2)).GetValue(this);
+			audioSource.PlayOneShot(selectSound, 0.7f);
 			grassParticles.Play(true);
 			StartCoroutine("LifeTime");
 		}
