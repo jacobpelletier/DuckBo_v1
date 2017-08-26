@@ -26,6 +26,8 @@ public class MuscleManControl : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip Hit1, Hit2, Hit3;
 	public AudioClip jump;
+	public AudioClip spark;
+	public AudioClip land;
 
 	//Grab active playerScript
 	private GameObject player;
@@ -148,6 +150,9 @@ public class MuscleManControl : MonoBehaviour {
 			anim.SetBool("Hit",true);
 			StartCoroutine("HitTime");
 		}
+		else{
+			audioSource.PlayOneShot(spark, 0.5f);
+		}
 	}
 
 	//Corouting for jump cooldown, also adds forces for jumping
@@ -158,6 +163,7 @@ public class MuscleManControl : MonoBehaviour {
 		anim.SetBool("Jump",false);
 
 		yield return new WaitForSeconds(0.8f);
+		audioSource.PlayOneShot(land, 0.7f);
 		Instantiate(whooshLeft, spawnLeft.transform.position, transform.rotation);
 		Instantiate(whooshRight, spawnRight.transform.position, transform.rotation);
 

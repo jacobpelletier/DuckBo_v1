@@ -419,10 +419,11 @@ public class PlayerController : MonoBehaviour {
     //function DEATH... KILL HIM
     public void Death()
     {
-        audioSource.PlayOneShot(death, 0.7f);
-
         rend.enabled = false;
   			col.enabled = false;
+        if (dead == false){
+          audioSource.PlayOneShot(death, 0.7f);
+        }
         dead = true;
         if(transform.localScale.x > 0){
           Instantiate(deathDuck, transform.position, transform.rotation);
