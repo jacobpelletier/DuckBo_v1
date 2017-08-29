@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GrassTrigger.cs" />
      <Compile Include="Assets\Scripts\Hunter1Controller.cs" />
+     <Compile Include="Assets\Scripts\LevelBackground.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\LevelSelect.cs" />
      <Compile Include="Assets\Scripts\MainMenuController.cs" />

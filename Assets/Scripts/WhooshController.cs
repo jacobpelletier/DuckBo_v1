@@ -8,10 +8,12 @@ public class WhooshController : MonoBehaviour {
 	public float speed = 1f;
 	public float lifetime = 0.7f;
 	public bool flipped = false;
+	public float distance;
 
 	//Components
 	private Rigidbody2D rb;
 	private PlayerController playerScript;
+	public GameObject cloudBurst;
 
 	// Use this for initialization
 	void Start () {
@@ -53,6 +55,12 @@ public class WhooshController : MonoBehaviour {
 			//instantiate dust particles here
 			Destroy(gameObject);
 		}
+	}
+
+	void OnDestroy(){
+		Vector3 temp = transform.position;
+		temp.x += distance;
+		Instantiate(cloudBurst, temp, transform.rotation);
 	}
 
 	//length of life for the whoosh

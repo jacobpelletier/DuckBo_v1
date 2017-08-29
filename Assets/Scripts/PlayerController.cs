@@ -423,14 +423,14 @@ public class PlayerController : MonoBehaviour {
   			col.enabled = false;
         if (dead == false){
           audioSource.PlayOneShot(death, 0.7f);
+          if(transform.localScale.x > 0){
+            Instantiate(deathDuck, transform.position, transform.rotation);
+          }
+          else{
+            Instantiate(deathDuckFlipped, transform.position, transform.rotation);
+          }
         }
-        dead = true;
-        if(transform.localScale.x > 0){
-          Instantiate(deathDuck, transform.position, transform.rotation);
-        }
-        else{
-          Instantiate(deathDuckFlipped, transform.position, transform.rotation);
-        }
+        dead = true;    
 
         StartCoroutine("PauseBeforeDeath");
     }

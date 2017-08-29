@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour {
     public bool mainMenu = false;
 
   //On Camera initialization
-  void Start (){
+  void Awake (){
     //If this is not the main menu, we need to position the camera appropriately
     if(!mainMenu){
 
