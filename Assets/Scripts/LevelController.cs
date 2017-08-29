@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour {
 
 	public GameObject pauseMenu;
 	public GameObject signScreen;
+	private SignController chosenSignScript;
 	public Image resumeButton;
 	public Image leaveButton;
 
@@ -60,10 +61,16 @@ public class LevelController : MonoBehaviour {
 				}
 			}
 			else{
+				chosenSignScript.SetFalse();
 				signScreen.SetActive(false);
 				sign = false;
 			}
+		}
 
+		if(sign && Input.GetKeyDown(KeyCode.E)){
+			chosenSignScript.SetFalse();
+			signScreen.SetActive(false);
+			sign = false;
 		}
 
 		//If pause menu is active
@@ -87,7 +94,7 @@ public class LevelController : MonoBehaviour {
 			}
 
 			//If user inputs enter/return...
-			if(Input.GetKeyDown(KeyCode.Return)){
+			if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
 
 				audioSource.PlayOneShot(pauseClick, 0.7f);
 				//... and current selection is resume ...
@@ -112,14 +119,20 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
-	public void setSign(GameObject chosenSign){
-		sign = true;
+	public void setSign(GameObject chosenSign, GameObject signCollider){
 		signScreen = chosenSign;
+		chosenSignScript = signCollider.GetComponent<SignController>();
+		StartCoroutine("signCooldown");
 	}
 
 	//Delay between transferring to main menu, waiting for fadeout
 	IEnumerator Exit(){
 		yield return new WaitForSeconds(1f);
 		GameController.control.StartGame(0);
+	}
+
+	IEnumerator signCooldown(){
+		yield return new WaitForSeconds(0.2f);
+		sign = true;
 	}
 }

@@ -42,6 +42,7 @@ public class MainMenuController : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip select;
 	public AudioClip click;
+	private GameObject musicMachineLevel;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +51,10 @@ public class MainMenuController : MonoBehaviour {
 		exitScript = exit.GetComponent<ExitButton>();
 
 		currentSelection = GameController.control.currentLevel;
+
+		if(musicMachineLevel = GameObject.Find("MusicMachineLevel")){
+			Destroy(musicMachineLevel);
+		}
 
 		//COLORING
 		faded = new Color32(223,117,103,255);
@@ -85,7 +90,7 @@ public class MainMenuController : MonoBehaviour {
 				exitButton.color = mainFaded;
 
 				//...and enter is pressed, start game
-				if(Input.GetKeyDown(KeyCode.Return)){
+				if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
 					playScript.StartGames();
 					audioSource.PlayOneShot(click, 0.7f);
 				}
@@ -95,7 +100,7 @@ public class MainMenuController : MonoBehaviour {
 				exitButton.color = mainOriginal;
 
 				//...and enter is pressed, go to escape menu
-				if(Input.GetKeyDown(KeyCode.Return)){
+				if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
 					exitScript.Escaped();
 					audioSource.PlayOneShot(click, 0.7f);
 				}
@@ -112,7 +117,7 @@ public class MainMenuController : MonoBehaviour {
 			change.color = original;
 
 			//If user presses enter, call start level
-			if(Input.GetKeyDown(KeyCode.Return)){
+			if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
 				if(currentSelection != 0){
 					selectScript.LoadLevel();
 					audioSource.PlayOneShot(click, 0.7f);
@@ -191,7 +196,7 @@ public class MainMenuController : MonoBehaviour {
 			if(selectLeave){
 				leaveButton.color = original;
 				backButton.color = faded;
-				if(Input.GetKeyDown(KeyCode.Return)){
+				if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
 					exitScript.QuitGame();
 					audioSource.PlayOneShot(click, 0.7f);
 				}
@@ -199,7 +204,7 @@ public class MainMenuController : MonoBehaviour {
 			else{
 				leaveButton.color = faded;
 				backButton.color = original;
-				if(Input.GetKeyDown(KeyCode.Return)){
+				if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E)){
 					exitCheck.SetActive(false);
 					audioSource.PlayOneShot(click, 0.7f);
 				}

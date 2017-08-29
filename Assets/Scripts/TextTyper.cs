@@ -13,7 +13,7 @@ public class TextTyper : MonoBehaviour {
 
 	int currentlyDisplayingText = 0;
 
-	void Awake () {
+	void OnEnable () {
 		StartCoroutine(AnimateText());
 	}
 		//This is a function for a button you press to skip to the next text

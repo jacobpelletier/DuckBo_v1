@@ -91,11 +91,11 @@ public class CameraController : MonoBehaviour {
   void OnGUI(){
 
     //Reloads level
-    if (GUI.Button(new Rect(10, 70, 100, 30), "ResetLevel"))
+    if (GUI.Button(new Rect(10, 400, 100, 30), "ResetLevel"))
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     //Deletes old save, and sets values to default
-    if (GUI.Button(new Rect(10, 100, 100, 30), "DeleteSave")){
+    if (GUI.Button(new Rect(110, 400, 100, 30), "DeleteSave")){
       File.Delete(Application.persistentDataPath + "/playerInfo.duck");
       RefreshEditorProjectWindow();
 
@@ -106,7 +106,7 @@ public class CameraController : MonoBehaviour {
     }
 
     //Delete objects collected, yayyy
-    if(GUI.Button(new Rect(10, 130, 100, 30), "DeleteCollects")){
+    if(GUI.Button(new Rect(210, 400, 100, 30), "DeleteCollects")){
       GameController.control.collectables = new bool[50];
     }
 

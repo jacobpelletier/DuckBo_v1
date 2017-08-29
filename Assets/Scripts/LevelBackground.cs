@@ -15,14 +15,8 @@ public class LevelBackground : MonoBehaviour {
 	//Need camera to grab position
 	private Camera cam;
 
-	//Grab sprite
-	private SpriteRenderer thisSR;
-
-
 	// Use this for initialization
 	void Start () {
-		thisSR = GetComponent<SpriteRenderer>();
-
 		cam = Camera.main;
 		origPos = cam.transform.position.x;
 		origSRPos = transform.position.x;
