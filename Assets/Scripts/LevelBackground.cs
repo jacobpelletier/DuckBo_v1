@@ -29,7 +29,7 @@ public class LevelBackground : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		float variance = cam.transform.position.x - origPos;
 		variance *= speedReduce;
