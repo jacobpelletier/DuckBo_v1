@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 850
-  m_MinSize: {x: 683, y: 342}
-  m_MaxSize: {x: 12008, y: 8042}
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 15390
+  controlID: 18533
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,9 +154,9 @@ MonoBehaviour:
     height: 829
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ba28e0ff
-    m_LastClickedID: -2086726
-    m_ExpandedIDs: 0429e0fff629e0ffcc24e2fffecae2ff229ee7ff469ee7ff569ee7ff5a9ee7ffa2a0e7ffb2a0e7ffaaa1e7ffd4bae7ff8814e8ff3030e8ff6e42faffa447fbffd6faffffe6faffffdcfbfffff4ffffff000000000c290000aa290000e8040100dc350100e4d0020068030300c0030300d40b0300
+    m_SelectedIDs: 5a270000
+    m_LastClickedID: 0
+    m_ExpandedIDs: c845d9ffce73ddff3c5bdeffd6e0deffa225e0ff0429e0fff629e0ffcc24e2fffecae2ff229ee7ff469ee7ff569ee7ff5a9ee7ffa2a0e7ffb2a0e7ffaaa1e7ffd4bae7ff8814e8ff3030e8ff6e42faffa447fbffd6faffffe6faffffdcfbfffff4ffffff000000000c290000aa290000e8040100dc350100e4d0020068030300c0030300d40b0300dc450300
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -172,7 +172,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 3}
     m_SearchString: 
   m_ExpandedScenes:
   - Level1
@@ -199,10 +199,10 @@ MonoBehaviour:
     y: 0
     width: 755
     height: 850
-  m_MinSize: {x: 204, y: 342}
-  m_MaxSize: {x: 4004, y: 8042}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 15391
+  controlID: 18534
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,14 +318,14 @@ MonoBehaviour:
     width: 751
     height: 520
   m_SceneLighting: 1
-  lastFramingTime: 181762.49381297827
+  lastFramingTime: 136920.68201100826
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 35.738876, y: -0.68427587, z: 0}
+    m_Target: {x: -1.0291831, y: 0.08280087, z: 0}
     speed: 2
-    m_Value: {x: 35.738876, y: -0.68427587, z: 0}
+    m_Value: {x: -1.0291831, y: 0.08280087, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -352,9 +352,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.8722878
+    m_Target: 11.807233
     speed: 2
-    m_Value: 2.8722878
+    m_Value: 11.807233
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -383,15 +383,15 @@ MonoBehaviour:
     y: 541
     width: 755
     height: 309
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 234, y: 271}
+  m_MaxSize: {x: 10004, y: 10021}
+  m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -429,18 +429,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Materials
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/jacobpelletier/Documents/DuckBo_v1/DuckBo_v1
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b0260000
-    m_LastClickedID: 9904
+    m_SelectedIDs: 92270000
+    m_LastClickedID: 10130
     m_ExpandedIDs: 00000000d6240000842e0000862e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -494,10 +494,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: ba28e0ff
-    m_LastClickedInstanceID: -2086726
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: a0280000ee2400003c3f01000000000042260000
+    m_SelectedInstanceIDs: 5a270000
+    m_LastClickedInstanceID: 10074
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: a0280000ee2400003c3f0100000000004226000080f10200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -513,7 +513,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 9}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -573,9 +573,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 247
-    y: 588
+    y: 590
     width: 751
-    height: 290
+    height: 288
   m_AnimEditor: {fileID: 0}
   m_Locked: 0
 --- !u!114 &13

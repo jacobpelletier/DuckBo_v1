@@ -112,6 +112,11 @@ public class BulletController : MonoBehaviour {
 
             instance.Hit(damage);
           }
+          else if (collider.name.Contains("HuntingDog")){
+            DogController instance = collider.gameObject.GetComponent<DogController>();
+            Instantiate(blood, transform.position, transform.rotation);
+            instance.Hit(damage);
+          }
 
           //Destroy bullet
           Destroy(gameObject);

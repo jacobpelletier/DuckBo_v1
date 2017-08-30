@@ -7,7 +7,7 @@ public class TrapScript : MonoBehaviour {
 
     public PlayerController playerScript;
 
-    //Initialize  
+    //Initialize
     void Start(){
       playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
@@ -18,6 +18,10 @@ public class TrapScript : MonoBehaviour {
         if(collider.tag == "Player")
         {
             playerScript.Death();
+        }
+        else if(collider.name.Contains("HuntingDog")){
+          DogController instance = collider.gameObject.GetComponent<DogController>();
+          instance.Hit(10);
         }
     }
 

@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour {
     private float halfMap;
     private float spotBegin;
     private float spotEnd;
+    private float height;
 
     //For fading
     public Texture2D fadeTexture;
@@ -44,7 +45,7 @@ public class CameraController : MonoBehaviour {
 
       //Get cam width and height
       cam = Camera.main;
-      float height = 2f * cam.orthographicSize;
+      height = 2f * cam.orthographicSize;
       float width = height * cam.aspect;
 
       //Find half of map, then find the begin and ending camera spot on x
@@ -91,11 +92,11 @@ public class CameraController : MonoBehaviour {
   void OnGUI(){
 
     //Reloads level
-    if (GUI.Button(new Rect(10, 400, 100, 30), "ResetLevel"))
+    if (GUI.Button(new Rect(10, height, 100, 30), "ResetLevel"))
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     //Deletes old save, and sets values to default
-    if (GUI.Button(new Rect(110, 400, 100, 30), "DeleteSave")){
+    if (GUI.Button(new Rect(110, height, 100, 30), "DeleteSave")){
       File.Delete(Application.persistentDataPath + "/playerInfo.duck");
       RefreshEditorProjectWindow();
 
@@ -106,7 +107,7 @@ public class CameraController : MonoBehaviour {
     }
 
     //Delete objects collected, yayyy
-    if(GUI.Button(new Rect(210, 400, 100, 30), "DeleteCollects")){
+    if(GUI.Button(new Rect(210, height, 100, 30), "DeleteCollects")){
       GameController.control.collectables = new bool[50];
     }
 

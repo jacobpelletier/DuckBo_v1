@@ -159,7 +159,12 @@ public class Hunter1Controller : MonoBehaviour {
 
 		//if wall, return true
 		if(wallCheck.collider != null){
-			return true;
+			if(wallCheck.collider.tag == "Map"){
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
 		else{
 			return false;
