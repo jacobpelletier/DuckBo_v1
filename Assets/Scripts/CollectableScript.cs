@@ -30,6 +30,7 @@ public class CollectableScript : MonoBehaviour {
 			GameController.control.Collect(id);
 			rend.enabled = false;
 			coll.enabled = false;
+			GameController.control.Save();
 			Destroy(gameObject, collectSound.length);
 		}
 	}
