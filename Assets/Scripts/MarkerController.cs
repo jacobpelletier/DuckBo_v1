@@ -6,6 +6,7 @@ public class MarkerController : MonoBehaviour {
 
 	private SpriteRenderer thisSR;
 	private bool markerOn = false;
+	public bool exitMarker = false;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,9 @@ public class MarkerController : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D collider){
 		if(collider.tag == "Player" && !markerOn){
 			thisSR.enabled = true;
-			transform.GetChild(0).gameObject.SetActive(true);
+			if(!exitMarker){
+				transform.GetChild(0).gameObject.SetActive(true);
+			}
 			markerOn = true;
 		}
 	}
@@ -23,7 +26,9 @@ public class MarkerController : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D collider){
 		if(collider.tag == "Player" && markerOn){
 			thisSR.enabled = false;
-			transform.GetChild(0).gameObject.SetActive(false);
+			if(!exitMarker){
+				transform.GetChild(0).gameObject.SetActive(false);
+			}
 			markerOn = false;
 		}
 	}
