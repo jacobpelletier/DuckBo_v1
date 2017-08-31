@@ -12,12 +12,14 @@ public class MusicController : MonoBehaviour {
 		audioSource = GetComponent<AudioSource>();
 		initialVolume = audioSource.volume;
 
-		if(GameController.control.musicMuted == true){
-			audioSource.volume = 0.0f;
-		}
-
 		if(GameController.control.soundMuted == true){
 			AudioListener.volume = 0.0f;
+		}
+		else if(GameController.control.musicMuted == true){
+			audioSource.volume = 0.0f;
+		}
+		else{
+			StartCoroutine("FadeIn");
 		}
 
 	}
@@ -42,7 +44,11 @@ public class MusicController : MonoBehaviour {
 		}
 	}
 
-	void CheckValues(){
-
+	IEnumerator FadeIn(){
+		AudioListener.volume = 0.0f;
+		while(AudioListener.volume < 1.0f){
+			AudioListener.volume += Time.deltaTime / 10;
+			yield return null;
+		}
 	}
 }
