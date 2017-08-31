@@ -8,6 +8,7 @@ public class DogController : MonoBehaviour {
 	public float maxVel = 3f;
 	public float maxVely = 5f;
 	public float jumpSpeed = 5f;
+	public float radius = 8f;
 	public int life = 2;
 
 	private float vel;
@@ -123,7 +124,7 @@ public class DogController : MonoBehaviour {
 
 	bool DetectPlayer(){
 		float playerX = player.transform.position.x;
-		if(playerX > (transform.position.x - 8f) && playerX < (transform.position.x + 8f)){
+		if(playerX > (transform.position.x - radius) && playerX < (transform.position.x + radius)){
 			return true;
 		}
 		else{

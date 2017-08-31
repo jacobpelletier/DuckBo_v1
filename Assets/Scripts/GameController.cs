@@ -21,6 +21,10 @@ public class GameController : MonoBehaviour {
 	public bool checkPoint = false;
 	public bool[] collectables;
 
+	//Music muting
+	public bool musicMuted = false;
+	public bool soundMuted = false;
+
 	//Runs before start
 	void Awake()
 	{
@@ -103,6 +107,8 @@ public class GameController : MonoBehaviour {
 		data.maxLevel = maxLevel;
 		data.currentLevel = currentLevel;
 		data.collectables = collectables;
+		data.muteMusic = musicMuted;
+		data.muteSound = soundMuted;
 
 		//Then saves it to the file path
 		bf.Serialize(file, data);
@@ -127,6 +133,8 @@ public class GameController : MonoBehaviour {
 			maxLevel = data.maxLevel;
 			currentLevel = data.currentLevel;
 			collectables = data.collectables;
+			musicMuted = data.muteMusic;
+			soundMuted = data.muteSound;
 		}
 		//If no save, just let us know
 		else{
@@ -147,5 +155,7 @@ public class GameController : MonoBehaviour {
 		public float maxLevel;
 		public float currentLevel;
 		public bool[] collectables;
+		public bool muteMusic;
+		public bool muteSound;
 	}
 }

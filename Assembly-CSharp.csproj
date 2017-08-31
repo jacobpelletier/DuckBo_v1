@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\MarkerController.cs" />
      <Compile Include="Assets\Scripts\MovingBackground.cs" />
      <Compile Include="Assets\Scripts\MuscleManControl.cs" />
+     <Compile Include="Assets\Scripts\MusicController.cs" />
      <Compile Include="Assets\Scripts\MusicKeeper.cs" />
      <Compile Include="Assets\Scripts\MuzzleFlashLife.cs" />
      <Compile Include="Assets\Scripts\OneWayScript.cs" />

@@ -9,6 +9,8 @@ public class BulletController : MonoBehaviour {
     public float speed = 5f;
     public int damage = 1;
     public Quaternion direction;
+    public float distance = 5f;
+    private Vector3 initialPos;
 
     //If enemyBullet is true, bullets will kill the player
     public bool enemyBullet = false;
@@ -28,6 +30,8 @@ public class BulletController : MonoBehaviour {
         playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
 
+        initialPos = transform.position;
+
         //Rotates bullet
         if (direction.z == 90f)
         {
@@ -43,11 +47,13 @@ public class BulletController : MonoBehaviour {
         }
 
         //Destroy on collision
-        StartCoroutine("AutoDestroy");
+        //StartCoroutine("AutoDestroy");
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
+        BulletDestroy();
+
         Vector3 temp;
 
         //Determine direction of bullet travel
@@ -123,11 +129,13 @@ public class BulletController : MonoBehaviour {
         }
     }
 
-    //If a bullet is alive for too damn long, get rid of it
-    IEnumerator AutoDestroy()
-    {
-        yield return new WaitForSeconds(0.5f);
-
+    //Bullet distance
+    void BulletDestroy(){
+      if((transform.position.x < (initialPos.x - distance)) || (transform.position.x > (initialPos.x + distance))){
         Destroy(gameObject);
+      }
+      else if((transform.position.y < (initialPos.y - distance)) || (transform.position.y > (initialPos.y + distance))){
+        Destroy(gameObject);
+      }
     }
 }
