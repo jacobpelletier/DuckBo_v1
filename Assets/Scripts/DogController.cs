@@ -19,6 +19,11 @@ public class DogController : MonoBehaviour {
 
 	private AudioSource audioSource;
 	public AudioClip Hit1, Hit2, Hit3;
+	public AudioClip jump;
+	public AudioClip death;
+	public AudioClip dogBark;
+	private bool barked = false;
+	private bool jumpCooldown = false;
 
 	private Rigidbody2D rb;
 	private bool dead = false;
@@ -61,6 +66,11 @@ public class DogController : MonoBehaviour {
 		if(DetectPlayer() == true && player.GetComponent<Collider2D>().enabled == true){
 			anim.SetBool("Move", true);
 			DogMovement();
+			if(barked == false){
+				Debug.Log("bark");
+				StartCoroutine("Barking");
+				barked = true;
+			}
 		}
 		else{
 			anim.SetBool("Move", false);
@@ -72,9 +82,11 @@ public class DogController : MonoBehaviour {
 		if(life <= 0){
 			rend.enabled = false;
 			col.enabled = false;
-			Destroy(gameObject, Hit1.length);
+			Destroy(gameObject, death.length);
 
 			if(dead == false){
+				audioSource.PlayOneShot(death, 0.7f);
+
 				if(direction.x > 0){
 					Instantiate(deadDog1, transform.position, transform.rotation);
 				}
@@ -116,6 +128,12 @@ public class DogController : MonoBehaviour {
 
 			if(vely <= maxVely){
 				jumpForce = jumpSpeed;
+			}
+
+			if(!jumpCooldown && dead == false){
+				audioSource.PlayOneShot(jump, 0.7f);
+				jumpCooldown = true;
+				StartCoroutine("JumpCooldown");
 			}
 
 			rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -175,5 +193,17 @@ public class DogController : MonoBehaviour {
 		audioSource.PlayOneShot(selectSound, 0.7f);
 
 		life -= damage;
+	}
+
+	IEnumerator JumpCooldown(){
+		yield return new WaitForSeconds(0.5f);
+		jumpCooldown = false;
+	}
+
+	IEnumerator Barking(){
+		audioSource.PlayOneShot(dogBark, 2f);
+		float temp = Random.Range(0.5f,1.0f);
+		yield return new WaitForSeconds(temp);
+		barked = false;
 	}
 }

@@ -430,7 +430,7 @@ public class PlayerController : MonoBehaviour {
             Instantiate(deathDuckFlipped, transform.position, transform.rotation);
           }
         }
-        dead = true;    
+        dead = true;
 
         StartCoroutine("PauseBeforeDeath");
     }

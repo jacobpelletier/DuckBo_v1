@@ -36,6 +36,7 @@ public class Hunter1Controller : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip Hit1, Hit2, Hit3;
 	public AudioClip shot;
+	public AudioClip death;
 
 	//Flip at start
 	public bool flip = false;
@@ -84,9 +85,12 @@ public class Hunter1Controller : MonoBehaviour {
 		if(life <= 0){
  			rend.enabled = false;
 			col.enabled = false;
- 			Destroy(gameObject, Hit1.length);
+
+ 			Destroy(gameObject, death.length);
 
 			if(dead == false){
+				audioSource.PlayOneShot(death,0.7f);
+
 				if(direction.x > 0){
 					Instantiate(deadHunter1, transform.position, transform.rotation);
 				}

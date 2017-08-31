@@ -28,6 +28,7 @@ public class MuscleManControl : MonoBehaviour {
 	public AudioClip jump;
 	public AudioClip spark;
 	public AudioClip land;
+	public AudioClip death;
 
 	//Grab active playerScript
 	private GameObject player;
@@ -76,9 +77,10 @@ public class MuscleManControl : MonoBehaviour {
 		if(life <= 0){
 			rend.enabled = false;
 			col.enabled = false;
-			Destroy(gameObject, Hit1.length);
+			Destroy(gameObject, death.length);
 
 			if(dead == false){
+				audioSource.PlayOneShot(death, 0.7f);
 				if(transform.localScale.x < 0){
 					Instantiate(deadMuscleLeft, transform.position, transform.rotation);
 				}
