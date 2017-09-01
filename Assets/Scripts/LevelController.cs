@@ -8,10 +8,13 @@ public class LevelController : MonoBehaviour {
 
 	CameraController activeCamera;
 
-	private bool pause = false;
+	public bool pause = false;
 	private bool resume = true;
 	private bool leave = false;
 	public bool sign = false;
+
+	public GameObject musicIcon;
+	public GameObject soundIcon;
 
 	public GameObject pauseMenu;
 	public GameObject signScreen;
@@ -26,6 +29,8 @@ public class LevelController : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip pauseSelect;
 	public AudioClip pauseClick;
+
+	private MusicController musicControl;
 
 	void Awake(){
 		audioSource = GetComponent<AudioSource>();
@@ -47,6 +52,8 @@ public class LevelController : MonoBehaviour {
 				//should pause
 				if(!pause){
 					pauseMenu.SetActive(true); 								// shows pause menu
+					musicIcon.SetActive(true);
+					soundIcon.SetActive(true);
 					Time.timeScale = 0f;											// pauses time
 					pause = true;															// sets bool for pause to true
 					Cursor.lockState = CursorLockMode.None;		// sets cursor to unlocked
@@ -54,6 +61,8 @@ public class LevelController : MonoBehaviour {
 				}
 				else{
 					pauseMenu.SetActive(false);								//Does the opposite of the above ^
+					musicIcon.SetActive(false);
+					soundIcon.SetActive(false);
 					Time.timeScale = 1f;
 					pause = false;
 					Cursor.lockState = CursorLockMode.Locked;
@@ -127,6 +136,9 @@ public class LevelController : MonoBehaviour {
 
 	//Delay between transferring to main menu, waiting for fadeout
 	IEnumerator Exit(){
+		musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
+		musicControl.ExitMusic();
+
 		yield return new WaitForSeconds(1f);
 		GameController.control.StartGame(0);
 	}

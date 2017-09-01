@@ -67,7 +67,6 @@ public class DogController : MonoBehaviour {
 			anim.SetBool("Move", true);
 			DogMovement();
 			if(barked == false){
-				Debug.Log("bark");
 				StartCoroutine("Barking");
 				barked = true;
 			}

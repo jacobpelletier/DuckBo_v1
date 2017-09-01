@@ -11,6 +11,8 @@ public class LevelSelect : MonoBehaviour {
 
 	private float levelSelected;
 
+	private MusicController musicControl;
+
 	//For each level button, assign an id level and if that level hasn't been reached, hide the button
 	void Awake(){
 		activeCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
@@ -31,9 +33,11 @@ public class LevelSelect : MonoBehaviour {
 	IEnumerator StartGame(){
 		GameController.control.Save();
 		activeCamera.fadeOut = true;
+		musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
+		musicControl.ExitMusic();
 
 		yield return new WaitForSeconds(1f);
 		GameController.control.StartGame(level);
 	}
-	
+
 }

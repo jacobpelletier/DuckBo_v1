@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject deathDuckFlipped;
     private bool dead = false;
 
+    private MusicController musicControl;
+
     // Starts before Start function
     void Awake()
     {
@@ -111,7 +113,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Run player shots and jumping - Arrow keys and W || as long as sign isn't active
-        if(levelControl.sign == false && !dead){
+        if(levelControl.sign == false && !dead && levelControl.pause != true){
           PlayerShooting();
           PlayerJumpSpace();
           PlayerParticles();
@@ -510,7 +512,10 @@ public class PlayerController : MonoBehaviour {
     {
       activeCamera.fadeOut = true;
 
-      yield return new WaitForSeconds(4f);
+      musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
+  		musicControl.ExitMusic();
+
+      yield return new WaitForSeconds(1f);
       GameController.control.LevelWin();
     }
 

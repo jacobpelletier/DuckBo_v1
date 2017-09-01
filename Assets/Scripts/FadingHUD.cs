@@ -28,5 +28,8 @@ public class FadingHUD : MonoBehaviour {
 			hud.color = new Color(hud.color.r, hud.color.g, hud.color.b, hud.color.a - (Time.deltaTime));
 			yield return null;
 		}
+
+		yield return new WaitForSeconds(4f);
+		Destroy(gameObject);
 	}
 }

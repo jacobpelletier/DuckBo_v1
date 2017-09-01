@@ -7,6 +7,7 @@ public class ExitButton : MonoBehaviour {
 
 	CameraController activeCamera;
 	public GameObject exitScreen;
+	private MusicController musicControl;
 
 
 	//Finds the active camera
@@ -33,6 +34,8 @@ public class ExitButton : MonoBehaviour {
 	IEnumerator Escape(){
 		GameController.control.Save();
 		activeCamera.fadeOut = true;
+		musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
+		musicControl.ExitMusic();
 
 		yield return new WaitForSeconds(1f);
 		Application.Quit();
