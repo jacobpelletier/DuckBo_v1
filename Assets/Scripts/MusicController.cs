@@ -19,9 +19,8 @@ public class MusicController : MonoBehaviour {
 
 	//Initialize
 	void Start(){
+		GetMusic();
 		audioSource = GetComponent<AudioSource>();
-		musicSR = musicIcon.GetComponent<SpriteRenderer>();
-		soundSR = soundIcon.GetComponent<SpriteRenderer>();
 		initialVolume = audioSource.volume;
 
 		if(GameController.control.soundMuted == true){
@@ -72,6 +71,16 @@ public class MusicController : MonoBehaviour {
 				StopCoroutine("GoAway");
 				StartCoroutine("GoAway");
 			}
+		}
+	}
+
+	public void GetMusic(){
+		musicIcon = GameObject.Find("AllMusic");
+		soundIcon = GameObject.Find("AllSound");
+		musicSR = musicIcon.GetComponent<SpriteRenderer>();
+		soundSR = soundIcon.GetComponent<SpriteRenderer>();
+		if(!mainMenu){
+			StartCoroutine("GoAway");
 		}
 	}
 

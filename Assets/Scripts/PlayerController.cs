@@ -433,6 +433,7 @@ public class PlayerController : MonoBehaviour {
           }
         }
         dead = true;
+        levelControl.dead = true;
 
         StartCoroutine("PauseBeforeDeath");
     }

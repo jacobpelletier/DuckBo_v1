@@ -9,9 +9,11 @@ public class LevelController : MonoBehaviour {
 	CameraController activeCamera;
 
 	public bool pause = false;
+	public bool beenPaused = false;
 	private bool resume = true;
 	private bool leave = false;
 	public bool sign = false;
+	public bool dead = false;
 
 	public GameObject musicIcon;
 	public GameObject soundIcon;
@@ -42,13 +44,18 @@ public class LevelController : MonoBehaviour {
 		faded.a = 0.5f;
 	}
 
+	void Start(){
+		musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
+		musicControl.GetMusic();
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape)){
 
 			audioSource.PlayOneShot(pauseClick, 0.7f);
 
-			if(!sign){
+			if(!sign && !dead){
 				//should pause
 				if(!pause){
 					pauseMenu.SetActive(true); 								// shows pause menu
@@ -58,11 +65,14 @@ public class LevelController : MonoBehaviour {
 					pause = true;															// sets bool for pause to true
 					Cursor.lockState = CursorLockMode.None;		// sets cursor to unlocked
 					Cursor.visible = true;										// sets cursor to visible
+					beenPaused = true;
 				}
 				else{
 					pauseMenu.SetActive(false);								//Does the opposite of the above ^
-					musicIcon.SetActive(false);
-					soundIcon.SetActive(false);
+					if(beenPaused){
+						musicIcon.SetActive(false);
+						soundIcon.SetActive(false);
+					}
 					Time.timeScale = 1f;
 					pause = false;
 					Cursor.lockState = CursorLockMode.Locked;
@@ -136,7 +146,6 @@ public class LevelController : MonoBehaviour {
 
 	//Delay between transferring to main menu, waiting for fadeout
 	IEnumerator Exit(){
-		musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
 		musicControl.ExitMusic();
 
 		yield return new WaitForSeconds(1f);

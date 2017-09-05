@@ -6,8 +6,14 @@ using UnityEngine.UI;
 public class FadingHUD : MonoBehaviour {
 
 	public Text hud;
+	public float cooldown = 0.0f;
 	// Use this for initialization
 	void Start () {
+		StartCoroutine("Cooldown");
+	}
+
+	IEnumerator Cooldown(){
+		yield return new WaitForSeconds(cooldown);
 		StartCoroutine("HUDRoutine");
 	}
 

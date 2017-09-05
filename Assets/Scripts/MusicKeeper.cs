@@ -6,7 +6,7 @@ public class MusicKeeper : MonoBehaviour {
 
 	public static MusicKeeper musicControl;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if(musicControl == null){
 			DontDestroyOnLoad(gameObject);
 			musicControl = this;
