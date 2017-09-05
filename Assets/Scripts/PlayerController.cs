@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour {
     //Death
     public GameObject deathDuck;
     public GameObject deathDuckFlipped;
-    private bool dead = false;
+    public bool dead = false;
 
     private MusicController musicControl;
 

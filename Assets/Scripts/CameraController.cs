@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
     //Grab player and map
     //Will follow the player and use map as border
     public GameObject player;
+    public PlayerController playerScript;
     public GameObject map;
 
     //Need sprite renderer and cam for sizing
@@ -20,6 +21,7 @@ public class CameraController : MonoBehaviour {
     private float spotBegin;
     private float spotEnd;
     private float height;
+    private float lastY;
 
     //For fading
     public Texture2D fadeTexture;
@@ -40,6 +42,7 @@ public class CameraController : MonoBehaviour {
 
       //grab the player and map objects and find the map sprite renderer
       player = GameObject.Find("Player");
+      playerScript = player.GetComponent<PlayerController>();
       map = GameObject.FindWithTag("Map");
       mapSR = map.GetComponent<SpriteRenderer>();
 
@@ -55,6 +58,7 @@ public class CameraController : MonoBehaviour {
 
       //set camera position in the bottom-left most corner, pretty dope
       this.transform.position = new Vector3(spotBegin,0,-10);
+      lastY = player.transform.position.y;
     }
   }
 
@@ -81,6 +85,13 @@ public class CameraController : MonoBehaviour {
         else if (temp.x > spotEnd)
         {
             temp.x = spotEnd;
+        }
+
+        if(!playerScript.dead){
+          lastY = transform.position.y;
+        }
+        else{
+          temp.y = lastY;
         }
 
         //set camera pos, basically it follows the player side to side and down to a certain y

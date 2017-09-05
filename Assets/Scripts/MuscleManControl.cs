@@ -7,6 +7,7 @@ public class MuscleManControl : MonoBehaviour {
 	//Adjustable Player values
 	public float jumpSpeed = 8f;
 	public int life = 5;
+	public float delay = 0.0f;
 
 	//Jump variables
 	public bool jumpTime = false;
@@ -59,7 +60,7 @@ public class MuscleManControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine("JumpCooldown");
+		StartCoroutine("Delay");
 	}
 
 	// Update is called once per frame
@@ -180,5 +181,11 @@ public class MuscleManControl : MonoBehaviour {
 	IEnumerator HitTime(){
 		yield return new WaitForSeconds(0.3f);
 		anim.SetBool("Hit",false);
+	}
+
+	//Delay
+	IEnumerator Delay(){
+		yield return new WaitForSeconds(delay);
+		StartCoroutine("JumpCooldown");
 	}
 }

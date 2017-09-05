@@ -9,6 +9,8 @@ public class Hunter1Controller : MonoBehaviour {
 	public float moveSpeed = 5f;
 	public float maxVel = 2f;
 	public int life = 3;
+	public bool sentryMode = false;
+	private bool observing = true;
 
 	//Grab active playerScript
 	private PlayerController playerScript;
@@ -76,7 +78,13 @@ public class Hunter1Controller : MonoBehaviour {
 	//Physics update
 	void FixedUpdate(){
 
-		HunterMovement();
+		if(!sentryMode){
+			HunterMovement();
+		}
+		else{
+			HunterSentry();
+		}
+
 
 	}
 
@@ -100,6 +108,24 @@ public class Hunter1Controller : MonoBehaviour {
 			}
 
 			dead = true;
+		}
+	}
+
+	void HunterSentry(){
+		if(!PlayerCheck()){
+			if(observing){
+				StartCoroutine("Observe");
+				observing = false;
+			}
+		}
+		else{
+			//If not on cooldown
+			if(!shootCooldown){
+								shootCooldown = true;
+
+								anim.SetBool("Shoot", true);
+								StartCoroutine("ShootCooldown");
+			}
 		}
 	}
 
@@ -318,5 +344,11 @@ public class Hunter1Controller : MonoBehaviour {
 		IEnumerator HitTime(){
 			yield return new WaitForSeconds(0.3f);
 			anim.SetBool("Hit",false);
+		}
+
+		IEnumerator Observe(){
+			yield return new WaitForSeconds(2f);
+			FlipThis();
+			observing = true;
 		}
 }
