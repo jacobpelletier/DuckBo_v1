@@ -513,8 +513,8 @@ public class PlayerController : MonoBehaviour {
     {
       activeCamera.fadeOut = true;
 
-      musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
-  		musicControl.ExitMusic();
+      //musicControl = GameObject.FindWithTag("Music").GetComponent<MusicController>();
+  		//musicControl.ExitMusic();
 
       yield return new WaitForSeconds(1f);
       GameController.control.LevelWin();

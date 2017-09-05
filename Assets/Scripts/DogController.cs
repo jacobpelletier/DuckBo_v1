@@ -141,8 +141,14 @@ public class DogController : MonoBehaviour {
 
 	bool DetectPlayer(){
 		float playerX = player.transform.position.x;
+		float playerY = player.transform.position.y;
 		if(playerX > (transform.position.x - radius) && playerX < (transform.position.x + radius)){
-			return true;
+			if(playerY > (transform.position.y - (radius/2)) && playerY < (transform.position.y + (radius/2))){
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
 		else{
 			return false;
