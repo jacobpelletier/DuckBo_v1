@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject deathDuckFlipped;
     public bool dead = false;
 
+    //Music control
     private MusicController musicControl;
 
     // Starts before Start function
@@ -520,6 +521,7 @@ public class PlayerController : MonoBehaviour {
       GameController.control.LevelWin();
     }
 
+    //Pause after you die to embrace the death
     IEnumerator PauseBeforeDeath(){
       yield return new WaitForSeconds(3f);
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);

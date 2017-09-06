@@ -25,10 +25,12 @@ public class LevelBackground : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+		//variance between cam pos now and before, then reduce it by percentage
 		float variance = cam.transform.position.x - origPos;
 		variance *= speedReduce;
 
-
+		//set current position to the variance plus the orig position
+		//simulates a slow moving background
 		Vector3 temp = transform.position;
 		temp.x = origSRPos + variance;
 		transform.position = temp;

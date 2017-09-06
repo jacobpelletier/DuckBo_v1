@@ -8,6 +8,8 @@ public class FloatingMovement : MonoBehaviour {
 	//Speed and distance of float
 	public float speed = 1f;
 	public float amplitude = 2f;
+
+	//Set whether or not it's hovering
 	public bool hover = false;
 
 	//Start position

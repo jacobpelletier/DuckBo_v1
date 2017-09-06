@@ -30,6 +30,7 @@ public class BulletController : MonoBehaviour {
         playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
 
+        //gets bullet initial position
         initialPos = transform.position;
 
         //Rotates bullet
@@ -52,6 +53,7 @@ public class BulletController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
+        //Runs the bullet distance checker, if bullet is out of distance to travel, kill it
         BulletDestroy();
 
         Vector3 temp;
@@ -100,7 +102,7 @@ public class BulletController : MonoBehaviour {
         //if it collides with a hunter, get script and run hit function and show particles
         if(collider.tag == "Hunter" && !enemyBullet){
 
-          //if Hunter1 is hit, spawn blood splat and call the objects hit funciton
+          //if Hunter1 is hit, spawn blood splat and call the objects hit function
           if(collider.name.Contains("Hunter1")){
             Hunter1Controller instance = collider.gameObject.GetComponent<Hunter1Controller>();
             Instantiate(blood, transform.position, transform.rotation);
@@ -118,6 +120,7 @@ public class BulletController : MonoBehaviour {
 
             instance.Hit(damage);
           }
+          //if dog is hit, spawn blood splay and call the objects hit function
           else if (collider.name.Contains("HuntingDog")){
             DogController instance = collider.gameObject.GetComponent<DogController>();
             Instantiate(blood, transform.position, transform.rotation);
@@ -131,9 +134,11 @@ public class BulletController : MonoBehaviour {
 
     //Bullet distance
     void BulletDestroy(){
+      //If out of range in the x direction, destroy bullet
       if((transform.position.x < (initialPos.x - distance)) || (transform.position.x > (initialPos.x + distance))){
         Destroy(gameObject);
       }
+      //If out of range in the y direction, destroy bullet
       else if((transform.position.y < (initialPos.y - distance)) || (transform.position.y > (initialPos.y + distance))){
         Destroy(gameObject);
       }

@@ -12,11 +12,13 @@ public class FadingHUD : MonoBehaviour {
 		StartCoroutine("Cooldown");
 	}
 
+	//Fading hud delay
 	IEnumerator Cooldown(){
 		yield return new WaitForSeconds(cooldown);
 		StartCoroutine("HUDRoutine");
 	}
 
+	//Fading hud routine
 	IEnumerator HUDRoutine(){
 		yield return new WaitForSeconds(2f);
 

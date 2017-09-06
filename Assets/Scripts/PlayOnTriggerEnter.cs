@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//plays sound on enter and exit, was used for water
 public class PlayOnTriggerEnter : MonoBehaviour {
 
 	private AudioSource audioSource;

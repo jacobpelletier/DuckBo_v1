@@ -13,8 +13,11 @@ public class MarkerController : MonoBehaviour {
 		thisSR = GetComponent<SpriteRenderer>();
 	}
 
+	//On continuous collision..
 	void OnTriggerStay2D(Collider2D collider){
+		//..with the player and it's not already on..
 		if(collider.tag == "Player" && !markerOn){
+			//..enable marker!
 			thisSR.enabled = true;
 			if(!exitMarker){
 				transform.GetChild(0).gameObject.SetActive(true);
@@ -23,8 +26,11 @@ public class MarkerController : MonoBehaviour {
 		}
 	}
 
+	//When leaving collision..
 	void OnTriggerExit2D(Collider2D collider){
+		//..with the player and marker is on..
 		if(collider.tag == "Player" && markerOn){
+			//..disable marker!
 			thisSR.enabled = false;
 			if(!exitMarker){
 				transform.GetChild(0).gameObject.SetActive(false);

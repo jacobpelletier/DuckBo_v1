@@ -55,6 +55,7 @@ public class LevelController : MonoBehaviour {
 
 			audioSource.PlayOneShot(pauseClick, 0.7f);
 
+			//If sign not active and not dead
 			if(!sign && !dead){
 				//should pause
 				if(!pause){
@@ -79,6 +80,7 @@ public class LevelController : MonoBehaviour {
 					Cursor.visible = false;
 				}
 			}
+			//else set sign to inactive 
 			else{
 				chosenSignScript.SetFalse();
 				signScreen.SetActive(false);
@@ -86,6 +88,7 @@ public class LevelController : MonoBehaviour {
 			}
 		}
 
+		//if not on cooldown and hits e, sign activation
 		if(sign && Input.GetKeyDown(KeyCode.E)){
 			chosenSignScript.SetFalse();
 			signScreen.SetActive(false);
@@ -138,6 +141,7 @@ public class LevelController : MonoBehaviour {
 		}
 	}
 
+	//Set the selected sign
 	public void setSign(GameObject chosenSign, GameObject signCollider){
 		signScreen = chosenSign;
 		chosenSignScript = signCollider.GetComponent<SignController>();
@@ -152,6 +156,7 @@ public class LevelController : MonoBehaviour {
 		GameController.control.StartGame(0);
 	}
 
+	//cooldown before you can select again
 	IEnumerator signCooldown(){
 		yield return new WaitForSeconds(0.2f);
 		sign = true;

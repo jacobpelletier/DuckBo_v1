@@ -58,6 +58,8 @@ public class CameraController : MonoBehaviour {
 
       //set camera position in the bottom-left most corner, pretty dope
       this.transform.position = new Vector3(spotBegin,0,-10);
+
+      //Gets the players last y position before the player is killed
       lastY = player.transform.position.y;
     }
   }
@@ -87,9 +89,11 @@ public class CameraController : MonoBehaviour {
             temp.x = spotEnd;
         }
 
+        //if player is not dead, follow the players y axis
         if(!playerScript.dead){
           lastY = transform.position.y;
         }
+        //else continue from the last recorded y position
         else{
           temp.y = lastY;
         }

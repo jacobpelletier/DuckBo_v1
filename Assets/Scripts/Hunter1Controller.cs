@@ -9,6 +9,8 @@ public class Hunter1Controller : MonoBehaviour {
 	public float moveSpeed = 5f;
 	public float maxVel = 2f;
 	public int life = 3;
+
+	//Sentry mode activate here
 	public bool sentryMode = false;
 	private bool observing = true;
 
@@ -78,9 +80,11 @@ public class Hunter1Controller : MonoBehaviour {
 	//Physics update
 	void FixedUpdate(){
 
+		//if not doing sentry mode, move normally
 		if(!sentryMode){
 			HunterMovement();
 		}
+		//else perform sentry mode
 		else{
 			HunterSentry();
 		}
@@ -96,6 +100,7 @@ public class Hunter1Controller : MonoBehaviour {
 
  			Destroy(gameObject, death.length);
 
+			//If wasn't dead, play sound and instantiate exploding bodies
 			if(dead == false){
 				audioSource.PlayOneShot(death,0.7f);
 
@@ -111,20 +116,23 @@ public class Hunter1Controller : MonoBehaviour {
 		}
 	}
 
+	//Sentry mode code
 	void HunterSentry(){
+		//if player isn't in line of sight, observe
 		if(!PlayerCheck()){
+			//If ready to observe, observe
 			if(observing){
 				StartCoroutine("Observe");
 				observing = false;
 			}
 		}
 		else{
-			//If not on cooldown
+			//If not on cooldown, shooooot
 			if(!shootCooldown){
-								shootCooldown = true;
+				shootCooldown = true;
 
-								anim.SetBool("Shoot", true);
-								StartCoroutine("ShootCooldown");
+				anim.SetBool("Shoot", true);
+				StartCoroutine("ShootCooldown");
 			}
 		}
 	}
@@ -346,6 +354,7 @@ public class Hunter1Controller : MonoBehaviour {
 			anim.SetBool("Hit",false);
 		}
 
+		//If ready to observe, flip him around :)
 		IEnumerator Observe(){
 			yield return new WaitForSeconds(2f);
 			FlipThis();

@@ -31,6 +31,8 @@ public class CollectableScript : MonoBehaviour {
 			rend.enabled = false;
 			coll.enabled = false;
 			GameController.control.Save();
+
+			//Destroy it after the sound plays
 			Destroy(gameObject, collectSound.length);
 		}
 	}
