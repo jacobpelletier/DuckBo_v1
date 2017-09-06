@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
 	public float currentLevel = 1;
 
 	//Checkpoints and Collectables data
-	public bool checkPoint = false;
+	public bool[] checkPoint;
 	public bool[] collectables;
 
 	//Music muting
@@ -40,6 +40,8 @@ public class GameController : MonoBehaviour {
 
 		//Instantiate collectables
 		collectables = new bool[50];
+		checkPoint = new bool[10];
+		checkPoint[0] = false;
 	}
 
 	//Start
@@ -51,7 +53,7 @@ public class GameController : MonoBehaviour {
 	//On play, load level
 	public void StartGame(float level){
 		GameController.control.Save();
-		checkPoint = false;
+		checkPoint[0] = false;
 
 		//If level to load is not the main menu...
 		if(level != 0){
