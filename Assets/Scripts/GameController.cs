@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public float playingLevel = 1; //Level currently playing on
 	public float maxLevel = 15;
 	public float currentLevel = 1;
+	public bool levelTitle = true;
 
 	//Checkpoints and Collectables data
 	public bool[] checkPoint;
@@ -53,7 +54,12 @@ public class GameController : MonoBehaviour {
 	//On play, load level
 	public void StartGame(float level){
 		GameController.control.Save();
-		checkPoint[0] = false;
+
+		//Reset checkpoints and level
+		for(int i = 0; i < checkPoint.Length; i++){
+			checkPoint[i] = false;
+		}
+		levelTitle = true;
 
 		//If level to load is not the main menu...
 		if(level != 0){
@@ -86,7 +92,8 @@ public class GameController : MonoBehaviour {
 		if(playingLevel == currentLevel){
 			currentLevel += 1f;
 		}
-		StartGame(currentLevel);
+		playingLevel += 1f;
+		StartGame(playingLevel);
 	}
 
 	//triggers in CollectableScript.cs, picks up collectable with given ID, saves this value later

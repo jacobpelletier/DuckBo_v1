@@ -9,7 +9,9 @@ public class FadingHUD : MonoBehaviour {
 	public float cooldown = 0.0f;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine("Cooldown");
+		if(GameController.control.levelTitle){
+			StartCoroutine("Cooldown");
+		}
 	}
 
 	//Fading hud delay
@@ -21,7 +23,7 @@ public class FadingHUD : MonoBehaviour {
 	//Fading hud routine
 	IEnumerator HUDRoutine(){
 		yield return new WaitForSeconds(2f);
-
+		GameController.control.levelTitle = false;
 		//Fade in
 		hud.color = new Color(hud.color.r, hud.color.g, hud.color.b, 0);
 		while(hud.color.a < 1.0f){
