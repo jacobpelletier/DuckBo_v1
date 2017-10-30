@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour {
 
     //Bullet movement and damage variables
     public float speed = 5f;
+    const float maxSpeed = 20f;
     public int damage = 1;
     public Quaternion direction;
     public float distance = 5f;
@@ -55,6 +56,7 @@ public class BulletController : MonoBehaviour {
 	void FixedUpdate () {
         //Runs the bullet distance checker, if bullet is out of distance to travel, kill it
         BulletDestroy();
+        float vel = Mathf.Abs(rb.velocity.x);
 
         Vector3 temp;
 
@@ -62,18 +64,22 @@ public class BulletController : MonoBehaviour {
         if (direction.z == 0f)
         {
             temp = new Vector3(1f, 0f, 0f);
+            vel = Mathf.Abs(rb.velocity.x);
         }
         else if (direction.z == 180f)
         {
             temp = new Vector3(-1f, 0f, 0f);
+            vel = Mathf.Abs(rb.velocity.x);
         }
         else if (direction.z == 90f)
         {
             temp = new Vector3(0f, 1f, 0f);
+            vel = Mathf.Abs(rb.velocity.y);
         }
         else if (direction.z == -90f)
         {
             temp = new Vector3(0f, -1f, 0f);
+            vel = Mathf.Abs(rb.velocity.y);
         }
         else
         {
@@ -81,7 +87,12 @@ public class BulletController : MonoBehaviour {
         }
 
         //Add speed to it...
-        temp *= speed;
+        if(vel < maxSpeed){
+          temp *= speed;
+        }
+        else{
+          temp = new Vector3(0f, 0f, 0f);
+        }
 
         //...then add the force <(-_-)>
         rb.AddForce(temp);
